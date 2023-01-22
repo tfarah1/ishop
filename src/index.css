@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  /* background: #333; */
+  /* color: whitesmoke; */
+  /* color: black; */
+}
+
+body {
+  min-height: 100vh;
+  font-size: 1.5rem;
+  /* padding: 0 10% 10%; */
+}
+
+/* input,
+textarea,
+button,
+select {
+  font: inherit;
+  margin-bottom: 1em;
+} */
+
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*ADDED CSS*/
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.copyrights {
+  display: flex;
+  justify-content: center;
+  background-color: blueviolet;
+  padding: 50px 80px 50px 80px;
+  margin-bottom: 0px;
+}
+
+/*NAVBAR*/
+.navbar {
+  padding-bottom: 100px;
+  background-color: blueviolet;
+  padding: 40px;
+}
+
+.nav-link {
+  justify-content: space-around;
+}
+
+Link {
+  color: white;
+}
+
+/*PRODUCT CARD*/
+.card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  /* padding: 0%; */
+}
+
+.card-box {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  border: 0.5px solid #ede7e7;
+  border-radius: 10px;
+}
+
+.card-top {
+  height: 30px;
+}
+
+.card-tag {
+  color: blueviolet;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+}
+
+.card-category {
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 15px;
+  display: inline-block;
+}
+
+.card-title {
+  font-size: small;
+  color: gray;
+}
+
+.card-img-container {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.card-image {
+  height: 200px;
+  width: 200px;
+  margin-top: 10px;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.card-price {
+  font-size: 14px;
+  padding: 5px;
+  height: 30px;
+  width: 70px;
+  border-radius: 20px;
+  background-color: rgb(204, 184, 228);
+  display: flex;
+  justify-content: center;
+}
+
+.card-cart {
+  /* color: blueviolet; */
+  color: rgb(141, 71, 226);
+  height: 35px;
+  width: 35px;
+}
+
+.main {
+  margin: 25px 50px;
+}
+
+.skeleton-row {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+.skeletonn {
+  display: inline-block;
+  /* width: 330px; */
+  padding-right: 5px;
+  width: 25%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  width: 100px;
+}
+
+
+/* Login */
+.form {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+}
