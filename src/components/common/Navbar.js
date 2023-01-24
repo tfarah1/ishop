@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="container-fluid">
         <span>
           <NavLink className="navbar-brand" to="/">
-            iSHOP
+            iShop
           </NavLink>
         </span>
 
