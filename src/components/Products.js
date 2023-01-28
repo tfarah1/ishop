@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setProducts as setProds } from "../features/products";
+// import { setProducts as setProds } from "../features/products";
+import { getProducts } from "../features/products";
 import SkeletonCustomized from "./common/SkeletonCustomized";
 import Filter from "./common/Filter";
 
@@ -11,26 +12,27 @@ const Products = () => {
 
   const [category, setCategory] = useState(null);
   const [clicked, setClicked] = useState(true);
-  const url = "https://fakestoreapi.com/products/";
+  // const url = "https://fakestoreapi.com/products/";
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw Error("Can not connect to the server!.");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // console.log(data);
-        dispatch(setProds(data));
-      })
-      .catch((e) => {
-        console.log(e.message);
-      });
-    // added dispatch
-  }, [url, dispatch]);
+    dispatch(getProducts());
+    // fetch(url)
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw Error("Can not connect to the server!.");
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     // console.log(data);
+    //     dispatch(setProds(data));
+    //   })
+    //   .catch((e) => {
+    //     console.log(e.message);
+    //   });
+    // // added dispatch
+  }, []);
 
   const showSkeleton = () => {
     return <SkeletonCustomized />;

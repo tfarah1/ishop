@@ -1,24 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// const getProducts = () => {
-//   let products = [];
-//   fetch("https://fakestoreapi.com/products/")
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw Error("Can't connect to the server!");
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       products = data;
-//     })
-//     .catch((e) => {
-//       console.log(e.message);
-//     });
-// };
+export const getProducts = () => (dispatch) => {
+  fetch("https://fakestoreapi.com/products/")
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("Can't connect to the server!");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      dispatch({ type: "products/setProducts", payload: data });
+    })
+    .catch((e) => {
+      console.log(e.message);
+    });
+};
 
 const initialState = {
   products: [],
+  cart: [],
 };
 
 export const productsSlice = createSlice({
@@ -28,6 +28,18 @@ export const productsSlice = createSlice({
     setProducts: (state, action) => {
       // console.log("action", action);
       state.products = action.payload;
+    },
+    addToCart: (state, action) => {
+      // console.log("action", action);
+      state.cart = [...state.cart, action.payload];
+    },
+    delProductFromCart: (state, action) => {
+      // console.log("action", action);
+      state.cart = state.cart.filter((p) => p.key !== action.payload);
+    },
+    delAllFromCart: (state) => {
+      // console.log("action");
+      state.cart = [];
     },
   },
 });

@@ -231,3 +231,14 @@ td {
   display: flex;
   justify-content: center;
 }
+
+.cart-counter {
+  font-size: 14px;
+  padding: 5px;
+  height: 30px;
+  width: 70px;
+  border-radius: 20px;
+  background-color: rgb(204, 184, 228);
+  display: flex;
+  justify-content: center;
+}

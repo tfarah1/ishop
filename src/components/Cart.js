@@ -1,49 +1,60 @@
 import React, { useEffect, useState } from "react";
 import { HiShoppingCart } from "react-icons/hi";
 import { AiFillDelete } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../features/products";
 
 const Cart = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   // let [totalPrice, setTotalPrice] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const url = "https://fakestoreapi.com/products/";
+  const productsInCart = useSelector((state) => state.products.cart);
 
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  // const url = "https://fakestoreapi.com/products/";
+
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw Error("Can not connect to the server!.");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          // console.log(data);
-          setProducts(data);
-          setLoading(true);
-        })
-        .catch((e) => {
-          console.log(e.message);
-          setLoading(true);
-        });
-    }, 2000);
-  }, [url]);
+    dispatch(getProducts());
+    // setTimeout(() => {
+    //   fetch(url)
+    //     .then((response) => {
+    //       if (!response.ok) {
+    //         throw Error("Can not connect to the server!.");
+    //       }
+    //       return response.json();
+    //     })
+    //     .then((data) => {
+    //       // console.log(data);
+    //       setProducts(data);
+    //       setLoading(true);
+    //     })
+    //     .catch((e) => {
+    //       console.log(e.message);
+    //       setLoading(true);
+    //     });
+    // }, 2000);
+  }, []);
 
   const handleDelete = (id) => {
-    const updatedProducts = products.filter((p) => p.id !== id);
-    setProducts(updatedProducts);
+    
+    // setProducts(updatedProducts);
+    dispatch({ type: "products/delProductFromCart", payload: id });
   };
 
   const handleDeleteAll = () => {
-    setProducts([]);
+    dispatch({ type: "products/delAllFromCart" });
   };
+  console.log(productsInCart);
 
-  return loading ? (
+  console.log(loading);
+  return !loading ? (
     <div className="cart-container">
       <div className="cart-top-container">
         {/* <p className="cart-title">Cart</p> */}
         <HiShoppingCart className="cart-cart" cursor="pointer" />
       </div>
+
       <table className="cart-table">
         <thead>
           <tr>
@@ -65,9 +76,9 @@ const Cart = () => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => {
+          {productsInCart.map((product, index) => {
             return (
-              <tr key={product.id}>
+              <tr key={index}>
                 <td>{product.title}</td>
                 <td>
                   <img
