@@ -186,7 +186,7 @@ Link {
 .cart-table {
   margin-top: 25px;
   border: 2px solid gray;
-  width: 1000px;
+  width: 100%;
 }
 
 th {
@@ -197,22 +197,22 @@ th {
 }
 
 td {
-  width: 10px;
+  /* width: 10px; */
   padding: 15px;
 }
 
-.cart-title {
+/* .cart-title {
   font-size: 60px;
   color: gray;
   display: inline-block;
-}
-
-/* .cart-cart {
-  display: inline-block;
-  color: rgb(141, 71, 226);
-  height: 80px;
-  width: 80px;
 } */
+
+.cart-cart {
+  height: 100px;
+  width: 100px;
+  color: rgb(77, 64, 64);
+  /* display: inline-block; */
+}
 
 .cart-image {
   width: 40px;
@@ -222,6 +222,12 @@ td {
 .cart-delete {
   height: 25px;
   width: 25px;
-  /* color: rgb(172, 47, 47); */
   color: rgb(158, 89, 223);
+}
+
+.three-dots{
+  font-size: 100px;
+  color: gray;
+  display: flex;
+  justify-content: center;
 }

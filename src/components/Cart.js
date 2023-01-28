@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import { BsFillCartPlusFill } from "react-icons/bs";
+import { HiShoppingCart } from "react-icons/hi";
 import { AiFillDelete } from "react-icons/ai";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
-  let [totalPrice, setTotalPrice] = useState(0);
+  // let [totalPrice, setTotalPrice] = useState(0);
+  const [loading, setLoading] = useState(false);
   const url = "https://fakestoreapi.com/products/";
 
   useEffect(() => {
@@ -17,11 +18,13 @@ const Cart = () => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setProducts(data);
+          setLoading(true);
         })
         .catch((e) => {
           console.log(e.message);
+          setLoading(true);
         });
     }, 2000);
   }, [url]);
@@ -31,21 +34,15 @@ const Cart = () => {
     setProducts(updatedProducts);
   };
 
-  const calcTotalPrice = () => {
-    for (let i = 0; i < products.length; i++) {
-      setTotalPrice(totalPrice + products[i].price);
-      console.log(products[i].price);
-    }
-    console.log(totalPrice);
-    return totalPrice;
+  const handleDeleteAll = () => {
+    setProducts([]);
   };
 
-
-  return (
+  return loading ? (
     <div className="cart-container">
       <div className="cart-top-container">
-        <p className="cart-title">Cart</p>
-        {/* <BsFillCartPlusFill className="cart-cart" cursor="pointer" /> */}
+        {/* <p className="cart-title">Cart</p> */}
+        <HiShoppingCart className="cart-cart" cursor="pointer" />
       </div>
       <table className="cart-table">
         <thead>
@@ -55,13 +52,23 @@ const Cart = () => {
             <th>Price</th>
             <th>Units</th>
             <th></th>
+            <th>
+              <button
+                className="btn btn-dark"
+                onClick={() => {
+                  handleDeleteAll();
+                }}
+              >
+                Delete All
+              </button>
+            </th>
           </tr>
         </thead>
         <tbody>
-          {products.map((product, key) => {
+          {products.map((product) => {
             return (
               <tr key={product.id}>
-                <td>{product.title.substring(0, 40)}</td>
+                <td>{product.title}</td>
                 <td>
                   <img
                     className="cart-image"
@@ -84,6 +91,8 @@ const Cart = () => {
         </tbody>
       </table>
     </div>
+  ) : (
+    <p className="three-dots">...</p>
   );
 };
 

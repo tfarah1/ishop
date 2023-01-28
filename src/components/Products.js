@@ -1,71 +1,48 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import ProductCard from "./ProductCard";
+import { useSelector, useDispatch } from "react-redux";
+import { setProducts as setProds } from "../features/products";
 import SkeletonCustomized from "./common/SkeletonCustomized";
+import Filter from "./common/Filter";
 
 const Products = () => {
-  const [query, setQuery] = useState("");
-  const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const products = useSelector((state) => state.products.products);
+
   const [category, setCategory] = useState(null);
   const [clicked, setClicked] = useState(true);
   const url = "https://fakestoreapi.com/products/";
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw Error("Can not connect to the server!.");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          setProducts(data);
-        })
-        .catch((e) => {
-          console.log(e.message);
-        });
-    }, 2000);
-  }, [url]);
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error("Can not connect to the server!.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // console.log(data);
+        dispatch(setProds(data));
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+    // added dispatch
+  }, [url, dispatch]);
 
   const showSkeleton = () => {
     return <SkeletonCustomized />;
   };
 
-  // const search = () => {
-  //   return products.filter((product) => {
-  //     if (query === "") {
-  //       return product;
-  //     } else if (
-  //       product.category.toLowerCase().includes(query.toLowerCase()) ||
-  //       product.title.toLowerCase().includes(query.toLowerCase())
-  //     ) {
-  //       return product;
-  //     }
-  //     return loading;
-  //   });
-  // };
-
   const showProducts = () => {
     return (
-      <>
-        <div className="card-row">
-          {query === ""
-            ? // filter
-              products.map((product) =>
-                product.category === category || !category ? (
-                  <ProductCard key={product.id} product={product} />
-                ) : null
-              )
-            : // search
-              products.map((product) =>
-                product.title.toLowerCase().includes(query.toLowerCase()) ? (
-                  <ProductCard key={product.id} product={product} />
-                ) : null
-              )}
-        </div>
-      </>
+      <Filter
+        products={products}
+        searchQuery={searchQuery}
+        category={category}
+      />
     );
   };
 
@@ -78,7 +55,7 @@ const Products = () => {
       <input
         style={{ paddingBottom: "20" }}
         placeholder="Search..."
-        onChange={(event) => setQuery(event.target.value)}
+        onChange={(event) => setSearchQuery(event.target.value)}
       />
       <div className="buttons">
         <button
@@ -123,7 +100,6 @@ const Products = () => {
           Electronics
         </button>
       </div>
-
       {products.length > 0 ? showProducts() : showSkeleton()}
     </div>
   );

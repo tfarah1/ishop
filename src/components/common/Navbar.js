@@ -10,7 +10,6 @@ const Navbar = () => {
             iShop
           </NavLink>
         </span>
-
         <span>
           <NavLink className="nav-link active" aria-current="page" to="/">
             Home
@@ -26,7 +25,6 @@ const Navbar = () => {
             About us
           </NavLink>
         </span>
-
         <span>
           <NavLink className="nav-link" to="/">
             Contact us

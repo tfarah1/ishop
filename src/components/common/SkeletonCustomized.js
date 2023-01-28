@@ -4,9 +4,9 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 const SkeletonCustomized = () => {
   return Array(10)
     .fill()
-    .map(() => {
+    .map((item, index) => {
       return (
-        <div>
+        <div key={index}>
           <SkeletonTheme color="gray" highlightColor="white">
             <div className="skeletonn">
               <Skeleton height={350} />
