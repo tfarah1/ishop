@@ -2,7 +2,7 @@ import React from "react";
 
 const Copyrights = () => {
   return (
-    <div className="footer">
+    <div id="footer" className="footer">
       <span className="copyrights">Copyrights</span>
     </div>
   );

@@ -6,14 +6,15 @@ import NotFound from "./components/common/NotFound";
 import Cart from "./components/Cart";
 import Copyrights from "./components/common/Copyrights";
 import Products from "./components/Products";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Checkout from "./components/common/Checkout";
 
 function App() {
   return (
     <div>
-      <Navbar  />
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Products />}></Route>
@@ -21,6 +22,7 @@ function App() {
         <Route path="login" element={<Login />}></Route>
         <Route path="signup" element={<Signup />}></Route>
         <Route path="products/:id" element={<ProductsDetails />}></Route>
+        <Route path="cart/checkout" element={<Checkout />}></Route>
         <Route path="cart" element={<Cart />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
