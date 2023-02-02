@@ -20,6 +20,7 @@ const initialState = {
   products: [],
   cart: [],
   searchQuery: "",
+  // productUnits: 1,
 };
 
 export const productsSlice = createSlice({
@@ -27,25 +28,37 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {
     setProducts: (state, action) => {
-      // console.log("action", action);
       state.products = action.payload;
     },
     setSearchQuery: (state, action) => {
-      // console.log(action.payload);
       state.searchQuery = action.payload;
     },
     addToCart: (state, action) => {
-      // if (!state.cart.includes(action.payload)){
-      state.cart = [...state.cart, action.payload];
-    },
+      // state = current(state) whenever you want to use state
+        console.log("products",state.products)
 
+        console.log("cart",state.cart)
+
+       console.log("action", action)
+      let index = state.cart.findIndex((p) => p.id === action.payload.id);
+      // console.log(index);
+      // console.log(found);
+      // if ( state.cart[index].productUnits){
+      if (index > -1) {
+        // console.log("INDEXXX", state.cart[index])
+        state.cart[index].productUnits = state.cart[index].productUnits + 1;
+      } else {
+        let item = Object.assign({}, action.payload);
+        item.productUnits = 1;
+        state.cart = [...state.cart, item];
+      }
+      // console.log("after adding to cart", current(state));
+    },
     delProductFromCart: (state, action) => {
       console.log("PAYLOADD", action);
       state.cart = state.cart.filter((p) => p.id !== action.payload);
     },
-
     delAllFromCart: (state) => {
-      // console.log("action");
       state.cart = [];
     },
   },

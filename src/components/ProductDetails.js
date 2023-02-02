@@ -30,6 +30,7 @@ const ProductDetails = () => {
     <div className="box" key={product.id}>
       <h1>{product.title}</h1>
       <p>Category: {product.category}</p>
+      <p>Description: {product.description}</p>
       <p>Price: {product.price}$</p>
       <img
         style={{ height: "250px", width: "250px" }}

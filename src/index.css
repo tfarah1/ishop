@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /* background-color:  white; */
 }
 
 html {
@@ -46,13 +48,16 @@ select {
 .copyrights {
   display: flex;
   justify-content: center;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
+  /* background-color: white; */
+  background-color: #f8f9fa;
   padding: 50px 80px 50px 80px;
+  margin-top: 100px;
   margin-bottom: 0px;
 }
 
 /*NAVBAR*/
-.navbar {
+/* .navbar {
   padding-bottom: 100px;
   background-color: blueviolet;
   padding: 40px;
@@ -60,7 +65,7 @@ select {
 
 .nav-link {
   justify-content: space-around;
-}
+} */
 
 Link {
   color: white;
@@ -152,6 +157,7 @@ Link {
   width: 100%;
   max-width: 100%;
 } */
+
 .skeletonn {
   display: inline-block;
   /* width: 330px; */
@@ -225,7 +231,7 @@ td {
   color: rgb(158, 89, 223);
 }
 
-.three-dots{
+.three-dots {
   font-size: 100px;
   color: gray;
   display: flex;
@@ -236,9 +242,28 @@ td {
   font-size: 14px;
   padding: 5px;
   height: 30px;
-  width: 70px;
+  width: 30px;
   border-radius: 20px;
   background-color: rgb(204, 184, 228);
   display: flex;
   justify-content: center;
+}
+
+.cart-empty {
+  display: block;
+  padding: 10%;
+  color: rgb(98, 97, 97);
+}
+
+.search-box-container {
+  width: 300px;
+}
+.search-box {
+  padding: 5px 0 5px 10px;
+  border-radius: 25px;
+  width: 100%;
+}
+
+.nav-item {
+  padding-right: 50px;
 }

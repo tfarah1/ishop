@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/common/Navbar";
+import Navbars from "./components/common/Navbars";
 import ProductsDetails from "./components/ProductDetails";
 import NotFound from "./components/common/NotFound";
 import Cart from "./components/Cart";
@@ -14,7 +14,7 @@ import Checkout from "./components/common/Checkout";
 function App() {
   return (
     <div>
-      <Navbar />
+      <Navbars />
 
       <Routes>
         <Route path="/" element={<Products />}></Route>

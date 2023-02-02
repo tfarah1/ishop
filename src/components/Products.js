@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "../features/products";
+import { getProducts } from "../features/productsSlice";
 import SkeletonCustomized from "./common/SkeletonCustomized";
 import Filter from "./common/Filter";
 
@@ -13,7 +13,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
+  });
 
   const showSkeleton = () => {
     return <SkeletonCustomized />;
@@ -55,11 +55,6 @@ const Products = () => {
   const electronicsBtnDecorator = () => {
     return category === "electronics" ? "btn btn-dark" : "btn btn-outline-dark";
   };
-
-  // const renderButton = (category) => {
-  //   let className = "btn btn-dark"
-  //   category === "women's clothing" ? className
-  // }
 
   return (
     <div className="main">

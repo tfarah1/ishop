@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Checkout() {
   const productsInCart = useSelector((state) => state.products.cart);
@@ -21,10 +22,17 @@ function Checkout() {
   // user info obj
   const userData = [];
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     userData.push(firstName, lastName, address, zip, date, { productsInCart });
-
+    dispatch({ type: "products/delAllFromCart" });
+    alert('Your order is on its way...')
+    setTimeout(() => {
+      navigate("/")
+    }, 2000);
     console.log(userData);
   };
 
@@ -44,6 +52,7 @@ function Checkout() {
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
       />
+      
       <br />
       <label>Last Name:</label>
       <br />
@@ -89,7 +98,11 @@ function Checkout() {
       />
       <br />
       <br />
-      <button type="submit" value="checkout" className="btn btn-dark">
+      <button
+        type="submit"
+        value="checkout"
+        className="btn btn-dark"
+      >
         Checkout
       </button>
     </form>

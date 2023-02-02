@@ -6,8 +6,7 @@ const Search = () => {
 
   return (
     <div>
-      <input
-        // style={{ paddingBottom: "20" }}
+      <input className="search-box"
         placeholder="Search..."
         onChange={(event) =>
           dispatch({
