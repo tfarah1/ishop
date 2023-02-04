@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { HiShoppingCart } from "react-icons/hi";
 import { AiFillDelete } from "react-icons/ai";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
@@ -31,40 +35,47 @@ const Cart = () => {
 
   const handleDelete = (id) => {
     const updatedProducts = products.filter((p) => p.id !== id);
+    console.log(updatedProducts)
     setProducts(updatedProducts);
   };
 
   const handleDeleteAll = () => {
     setProducts([]);
   };
-
+// Cart-table / 
   return loading ? (
+    <>
     <div className="cart-container">
       <div className="cart-top-container">
         {/* <p className="cart-title">Cart</p> */}
         <HiShoppingCart className="cart-cart" cursor="pointer" />
       </div>
-      <table className="cart-table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Units</th>
-            <th></th>
-            <th>
-              <button
-                className="btn btn-dark"
-                onClick={() => {
-                  handleDeleteAll();
-                }}
-              >
-                Delete All
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+      <Container className="cart-table">
+        <Row>
+            <Col>Title</Col>
+            <Col>Image</Col>
+            <Col>price</Col>
+            <Col>Units</Col>
+            <Col>Delete Items </Col>
+        </Row>
+        {products.map(product=>{
+        return(
+          <Row key={product.id}>
+               <Col>{product.title}</Col>
+               <Col><img className="cart-image" src={product.image} alt={product.category}/></Col>
+               <Col>{product.price}$</Col>
+               <Col>{product.rating.count}</Col>
+               <Col><AiFillDelete
+                    className="cart-delete"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleDelete(product.id)}
+                  ></AiFillDelete></Col>
+          </Row>
+        )
+        })
+        }
+           
+        {/* /* <tbody>
           {products.map((product) => {
             return (
               <tr key={product.id}>
@@ -85,15 +96,18 @@ const Cart = () => {
                     onClick={() => handleDelete(product.id)}
                   ></AiFillDelete>
                 </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+              </tr> */ }
+      </Container>
     </div>
+    </>
   ) : (
     <p className="three-dots">...</p>
   );
 };
-
+{/* <button
+                className="btn btn-dark"
+                onClick={() => {
+                  handleDeleteAll();
+                }}
+              ></button> */}
 export default Cart;

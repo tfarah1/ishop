@@ -231,3 +231,15 @@ td {
   display: flex;
   justify-content: center;
 }
+#root > div > div.cart-container > div.cart-table.container > div:nth-child(1) > div:nth-child(2){
+  position:relative;
+  right: 60px;
+}
+#root > div > div.cart-container > div.cart-table.container > div:nth-child(1) > div:nth-child(3){
+  position:relative;
+  right: 60px;
+}
+#root > div > div.box > div > div > div:nth-child(2) > div > div.card-body > button{
+  position: relative;
+  left: 35%;
+}

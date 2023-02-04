@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import Sale from "./common/Sale";
+// import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -28,15 +34,19 @@ const ProductDetails = () => {
 
   return (
     <div className="box" key={product.id}>
-      <h1>{product.title}</h1>
-      <p>Category: {product.category}</p>
-      <p>Price: {product.price}$</p>
-      <img
-        style={{ height: "250px", width: "250px" }}
-        src={product.image}
-        alt="product"
-      ></img>
-    </div>
+      <Container >
+      <Row>
+        <Col><Row>
+        <h1>{product.title}</h1>
+        </Row></Col>
+        <Col><Sale Title={product.title} Image={product.image} Category={product.category}/></Col>
+        {/* <Col></Col> */}
+      </Row>
+       
+             
+      </Container>
+      
+      </div> 
   );
 };
 
