@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+// import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import Sale from "./common/Sale";
+// import Sale from "./common/Sale";
 // import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 
 
 const ProductDetails = () => {

@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { FaSignInAlt, FaUser } from "react-icons/fa";
 import Search from "./Search";
 
 const Navbars = () => {
-
-  const productsInCart = useSelector((state) => state.products.cart);
+  const productsInCart = useSelector((state) => state.products.cart) || [];
 
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -41,7 +40,7 @@ const Navbars = () => {
             <span className="cart-counter">{productsInCart.length}</span>
           </li>
           <li className="nav-item">
-          <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
+            <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
           </li>
           <li className="nav-item search-box-container">
             <a className="nav-link" href="#footer">
@@ -59,9 +58,7 @@ const Navbars = () => {
             </NavLink>
           </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0">
-         
-        </form>
+        <form className="form-inline my-2 my-lg-0"></form>
       </div>
     </nav>
   );

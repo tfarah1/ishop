@@ -7,13 +7,13 @@ import Filter from "./common/Filter";
 
 const Products = () => {
   const products = useSelector((state) => state.products.products);
-
+  console.log(products);
   const [category, setCategory] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProducts());
-  });
+  }, []);
 
   const showSkeleton = () => {
     return <SkeletonCustomized />;
@@ -42,12 +42,8 @@ const Products = () => {
   //   return category === buttonID ? "btn btn-dark" : "btn btn-outline-dark";
   // };
 
-  const menBtnDecorator = () => {
-    return category === "men's clothing"
-      ? "btn btn-dark"
-      : "btn btn-outline-dark";
-  };
-
+  const menBtnDecorator =
+    category === "men's clothing" ? "btn btn-dark" : "btn btn-outline-dark";
   const jeweleryBtnDecorator = () => {
     return category === "jewelery" ? "btn btn-dark" : "btn btn-outline-dark";
   };
@@ -76,7 +72,7 @@ const Products = () => {
           Women
         </button>
         <button
-          className={menBtnDecorator()}
+          className={menBtnDecorator}
           onClick={() => {
             setCategory("men's clothing");
           }}

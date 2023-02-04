@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
+// import { createReducer, createAction, current } from '@reduxjs/toolkit'
 
 export const getProducts = () => (dispatch) => {
   fetch("https://fakestoreapi.com/products/")
@@ -15,10 +16,23 @@ export const getProducts = () => (dispatch) => {
       console.log(e.message);
     });
 };
+const calculateTotal = (cart) => {
+  console.log("calcu total");
+  let total = 0;
+  let len = cart.length;
+  if (len > 0) {
+    for (let i = 0; i < len; i++) {
+      total += cart[i].price * cart[i].productUnits;
+    }
+    return total;
+    // dispatch({ type: "SET_TOTAL_PRICE", payload: total });
+  }
+};
 
 const initialState = {
   products: [],
   cart: [],
+  totalPrice: 0,
   searchQuery: "",
   // productUnits: 1,
 };
@@ -33,6 +47,7 @@ export const productsSlice = createSlice({
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
     },
+
     addToCart: (state, action) => {
       let index = state.cart.findIndex((p) => p.id === action.payload.id);
       if (index > -1) {
@@ -42,6 +57,7 @@ export const productsSlice = createSlice({
         item.productUnits = 1;
         state.cart = [...state.cart, item];
       }
+      state.totalPrice = calculateTotal(state.cart);
     },
     delProductFromCart: (state, action) => {
       let index = state.cart.findIndex((p) => p.id === action.payload);
@@ -52,25 +68,19 @@ export const productsSlice = createSlice({
         } else {
           state.cart = state.cart.filter((p) => p.id !== action.payload);
         }
+        state.totalPrice = calculateTotal(state.cart);
       }
     },
     addAnotherToCart: (state, action) => {
       let index = state.cart.findIndex((p) => p.id === action.payload);
       if (index > -1) {
         state.cart[index].productUnits++;
-      }
-    },
-    totalPrice: (state, action) => {
-      let total = 0;
-      if (state.cart.length > 0) {
-        for (let i = 0; i < state.cart.length; i++) {
-          total += state.cart[i].price * state.cart[i].productUnits;
-        }
-        return total;
+        state.totalPrice = calculateTotal(state.cart);
       }
     },
     delAllFromCart: (state) => {
       state.cart = [];
+      state.totalPrice = calculateTotal(state.cart);
     },
   },
 });
