@@ -1,25 +1,24 @@
-const Login = () => {
-  return (
-    <div className="form">
-      <form>
-        <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="uname" required />
-        </div>
-        <div className="input-container">
-          <label>Password </label>
-          <input type="password" name="pass" required />
-        </div>
-        <div className="button-container">
-          <input type="submit" />
-        </div>
-      </form>
-    </div>
-  );
-};
+// const Login = () => {
+//   return (
+//     <div className="form">
+//       <form>
+//         <div className="input-container">
+//           <label>Username </label>
+//           <input type="text" name="uname" required />
+//         </div>
+//         <div className="input-container">
+//           <label>Password </label>
+//           <input type="password" name="pass" required />
+//         </div>
+//         <div className="button-container">
+//           <input type="submit" />
+//         </div>
+//       </form>
+//     </div>
+//   );
+// };
 
-export default Login;
-
+// export default Login;
 
 // import React, { useState } from 'react';
 // import {
@@ -111,3 +110,139 @@ export default Login;
 // }
 
 // export default Login;
+
+// import React from "react";
+// import { useState } from "react";
+
+// function Login() {
+
+//   const [firstName, setFirstName] = useState("");
+//   const [lastName, setLastName] = useState("");
+//   const [username, setUsername] = useState("");
+//   const [email, setEmail] = useState(0);
+
+//   // user info obj
+//   const userData = [];
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     userData.push(firstName, lastName, username, email);
+
+//     console.log(userData);
+//   };
+
+//   return (
+//     <form
+//       className="main"
+//       onSubmit={(e) => {
+//         handleSubmit(e);
+//       }}
+//     >
+//       <label>First Name:</label>
+//       <br />
+//       <input
+//         required
+//         name="firstName"
+//         type="text"
+//         value={firstName}
+//         onChange={(e) => setFirstName(e.target.value)}
+//       />
+
+//       <br />
+//       <label>Last Name:</label>
+//       <br />
+//       <input
+//         required
+//         name="lastName"
+//         type="text"
+//         value={lastName}
+//         onChange={(e) => setLastName(e.target.value)}
+//       />
+
+//       <br />
+//       <label>Username: </label>
+//       <br />
+//       <input
+//         required
+//         name="username"
+//         type="text"
+//         value={username}
+//         onChange={(e) => setUsername(e.target.value)}
+//       />
+
+//       <br />
+//       <label>Email: </label>
+//       <br />
+//       <input
+//         required
+//         name="email"
+//         type="email"
+//         value={email}
+//         onChange={(e) => setEmail(e.target.value)}
+//       />
+//       <br />
+
+//       <br />
+//       <button type="submit" value="checkout" className="btn btn-dark">
+//         Login
+//       </button>
+//     </form>
+//   );
+// }
+
+// export default Login;
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+
+function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const userData = [];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    userData.push({ username: username, password: password });
+    //authentication
+    // signInWithEmailAndPassword(username, password)
+    console.log(userData);
+  };
+
+  return (
+    <form
+      className="main"
+      onSubmit={(e) => {
+        handleSubmit(e);
+      }}
+    >
+      <label>Username: </label>
+      <br />
+      <input
+        required
+        name="username"
+        type="email"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+
+      <br />
+      <label>Password: </label>
+      <br />
+      <input
+        required
+        name="password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <br />
+
+      <br />
+      <button type="submit" value="checkout" className="btn btn-dark">
+        Login
+      </button>
+    </form>
+  );
+}
+
+export default Login;

@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { FaSignInAlt, FaUser } from "react-icons/fa";
 import Search from "./Search";
 
 const Navbars = () => {
+
   const productsInCart = useSelector((state) => state.products.cart);
+
   const [searchQuery, setSearchQuery] = useState("");
 
   return (

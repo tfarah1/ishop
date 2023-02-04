@@ -7,11 +7,14 @@ const ProductDetails = () => {
   const url = "https://fakestoreapi.com/products/";
 
   useEffect(() => {
-    fetch(url + id,{
-      
-      method:"get",data:{},
-      headers
-    :{"access-token":"5353353-5353-535353", "Content-Type":'application/json'}})
+    fetch(url + id, {
+      method: "get",
+      data: {},
+      headers: {
+        "access-token": "5353353-5353-535353",
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw Error("Can not connect to the server!.");

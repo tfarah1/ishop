@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
-import { HiShoppingCart } from "react-icons/hi";
-import { AiFillDelete } from "react-icons/ai";
+import { HiMinusCircle, HiShoppingCart } from "react-icons/hi";
+import { IoMdAddCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../features/productsSlice";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
   const productsInCart = useSelector((state) => state.products.cart);
-  // const productUnits = useSelector(state => state.products.productUnits);
-  
-  // const [productCount, setProductCount] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,7 +14,7 @@ const Cart = () => {
   });
 
   const handleDelete = (id) => {
-    console.log("THIS IS ID", id);
+    // console.log("THIS IS ID", id);
     dispatch({ type: "products/delProductFromCart", payload: id });
   };
 
@@ -25,26 +22,21 @@ const Cart = () => {
     dispatch({ type: "products/delAllFromCart" });
   };
 
-  // const renderCount = (product) => {
-  //   if (productsInCart?.includes(product)) {
-  //     setProductCount(productCount + 1);
+  const handleAddProduct = (id) => {
+    dispatch({ type: "products/addAnotherToCart", payload: id });
+  };
+
+  // const renderTotalPrice = () => {
+  //   let total = 0;
+  //   if (productsInCart.length > 0) {
+  //     for (let i = 0; i < productsInCart?.length; i++) {
+  //       total += productsInCart[i].price * productsInCart[i].productUnits;
+  //     }
   //   }
-  //   return productCount;
+  //   dispatch({ type: "products/renderTotalPrice" , payload: total});
   // };
-  //console.log(productsInCart);
-
-  // console.log(loading);
-
-  // units replaced by price for now
-  const renderTotalPrice = (productsInCart) => {
-    // console.log("total", productsInCart[0].price);
-    let total = 0;
-    if (productsInCart.length > 0) {
-      for (let i = 0; i < productsInCart?.length; i++) {
-        total += productsInCart[i].price * productsInCart[i].id;
-      }
-    }
-    return total;
+  const renderTotalPrice = () => {
+    dispatch({ type: "products/renderTotalPrice" });
   };
 
   const cartEmptyMessage = () => {
@@ -60,7 +52,6 @@ const Cart = () => {
   return productsInCart.length > 0 ? (
     <div className="cart-container">
       <div className="cart-top-container">
-        {/* <p className="cart-title">Cart</p> */}
         <HiShoppingCart className="cart-cart" cursor="pointer" />
       </div>
 
@@ -71,6 +62,7 @@ const Cart = () => {
             <th>Image</th>
             <th>Price</th>
             <th>Units</th>
+            <th></th>
             <th></th>
             <th>
               <button
@@ -99,11 +91,16 @@ const Cart = () => {
                 <td>${product.price}</td>
                 <td>{product.productUnits}</td>
                 <td>
-                  <AiFillDelete
+                  <HiMinusCircle
                     className="cart-delete"
                     style={{ cursor: "pointer" }}
                     onClick={() => handleDelete(product.id)}
-                  ></AiFillDelete>
+                  ></HiMinusCircle>
+                  <IoMdAddCircle
+                    className="cart-delete"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleAddProduct(product.id)}
+                  ></IoMdAddCircle>
                 </td>
               </tr>
             );

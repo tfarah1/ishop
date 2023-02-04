@@ -34,29 +34,40 @@ export const productsSlice = createSlice({
       state.searchQuery = action.payload;
     },
     addToCart: (state, action) => {
-      // state = current(state) whenever you want to use state
-        console.log("products",state.products)
-
-        console.log("cart",state.cart)
-
-       console.log("action", action)
       let index = state.cart.findIndex((p) => p.id === action.payload.id);
-      // console.log(index);
-      // console.log(found);
-      // if ( state.cart[index].productUnits){
       if (index > -1) {
-        // console.log("INDEXXX", state.cart[index])
-        state.cart[index].productUnits = state.cart[index].productUnits + 1;
+        state.cart[index].productUnits++;
       } else {
         let item = Object.assign({}, action.payload);
         item.productUnits = 1;
         state.cart = [...state.cart, item];
       }
-      // console.log("after adding to cart", current(state));
     },
     delProductFromCart: (state, action) => {
-      console.log("PAYLOADD", action);
-      state.cart = state.cart.filter((p) => p.id !== action.payload);
+      let index = state.cart.findIndex((p) => p.id === action.payload);
+      // console.log("index", index);
+      if (index > -1) {
+        if (state.cart[index].productUnits > 1) {
+          state.cart[index].productUnits--;
+        } else {
+          state.cart = state.cart.filter((p) => p.id !== action.payload);
+        }
+      }
+    },
+    addAnotherToCart: (state, action) => {
+      let index = state.cart.findIndex((p) => p.id === action.payload);
+      if (index > -1) {
+        state.cart[index].productUnits++;
+      }
+    },
+    totalPrice: (state, action) => {
+      let total = 0;
+      if (state.cart.length > 0) {
+        for (let i = 0; i < state.cart.length; i++) {
+          total += state.cart[i].price * state.cart[i].productUnits;
+        }
+        return total;
+      }
     },
     delAllFromCart: (state) => {
       state.cart = [];

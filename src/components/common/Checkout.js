@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Checkout() {
   const productsInCart = useSelector((state) => state.products.cart);
+  const totalPrice = useSelector((state) => state.products.totalPrice);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -27,11 +28,19 @@ function Checkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    userData.push(firstName, lastName, address, zip, date, { productsInCart });
+    userData.push(
+      firstName,
+      lastName,
+      address,
+      zip,
+      date,
+      { productsInCart },
+      totalPrice
+    );
     dispatch({ type: "products/delAllFromCart" });
-    alert('Your order is on its way...')
+    alert("Your order is on its way...");
     setTimeout(() => {
-      navigate("/")
+      navigate("/");
     }, 2000);
     console.log(userData);
   };
@@ -52,7 +61,7 @@ function Checkout() {
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
       />
-      
+
       <br />
       <label>Last Name:</label>
       <br />
@@ -98,11 +107,7 @@ function Checkout() {
       />
       <br />
       <br />
-      <button
-        type="submit"
-        value="checkout"
-        className="btn btn-dark"
-      >
+      <button type="submit" value="checkout" className="btn btn-dark">
         Checkout
       </button>
     </form>
