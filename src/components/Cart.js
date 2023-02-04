@@ -1,52 +1,61 @@
 import React, { useEffect, useState } from "react";
-import { HiShoppingCart } from "react-icons/hi";
 import { AiFillDelete } from "react-icons/ai";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { HiMinusCircle, HiShoppingCart } from "react-icons/hi";
+import { IoMdAddCircle } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../features/productsSlice";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const [products, setProducts] = useState([]);
-  // let [totalPrice, setTotalPrice] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const url = "https://fakestoreapi.com/products/";
+  const productsInCart = useSelector((state) => state.products.cart);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw Error("Can not connect to the server!.");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          // console.log(data);
-          setProducts(data);
-          setLoading(true);
-        })
-        .catch((e) => {
-          console.log(e.message);
-          setLoading(true);
-        });
-    }, 2000);
-  }, [url]);
+    dispatch(getProducts());
+  });
 
   const handleDelete = (id) => {
-    const updatedProducts = products.filter((p) => p.id !== id);
-    console.log(updatedProducts)
-    setProducts(updatedProducts);
+    // console.log("THIS IS ID", id);
+    dispatch({ type: "products/delProductFromCart", payload: id });
   };
 
   const handleDeleteAll = () => {
-    setProducts([]);
+    dispatch({ type: "products/delAllFromCart" });
   };
-// Cart-table / 
-  return loading ? (
-    <>
+
+  const handleAddProduct = (id) => {
+    dispatch({ type: "products/addAnotherToCart", payload: id });
+  };
+
+  // const renderTotalPrice = () => {
+  //   let total = 0;
+  //   if (productsInCart.length > 0) {
+  //     for (let i = 0; i < productsInCart?.length; i++) {
+  //       total += productsInCart[i].price * productsInCart[i].productUnits;
+  //     }
+  //   }
+  //   dispatch({ type: "products/renderTotalPrice" , payload: total});
+  // };
+  const renderTotalPrice = () => {
+    dispatch({ type: "products/renderTotalPrice" });
+  };
+
+  const cartEmptyMessage = () => {
+    return (
+      <>
+        <h3 className="cart-empty">
+          You haven't added any products to your cart yet...
+        </h3>
+      </>
+    );
+  };
+
+  return productsInCart.length > 0 ? (
     <div className="cart-container">
       <div className="cart-top-container">
-        {/* <p className="cart-title">Cart</p> */}
         <HiShoppingCart className="cart-cart" cursor="pointer" />
       </div>
       <Container className="cart-table">
@@ -77,7 +86,7 @@ const Cart = () => {
         {/* /* <tbody>
           {products.map((product) => {
             return (
-              <tr key={product.id}>
+              <tr key={index}>
                 <td>{product.title}</td>
                 <td>
                   <img
@@ -87,26 +96,39 @@ const Cart = () => {
                   ></img>
                 </td>
                 <td>${product.price}</td>
-                <td>{product.rating.count}</td>
+                <td>{product.productUnits}</td>
                 <td>
-                  <AiFillDelete
+                  <HiMinusCircle
                     className="cart-delete"
                     style={{ cursor: "pointer" }}
                     onClick={() => handleDelete(product.id)}
-                  ></AiFillDelete>
+                  ></HiMinusCircle>
+                  <IoMdAddCircle
+                    className="cart-delete"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleAddProduct(product.id)}
+                  ></IoMdAddCircle>
                 </td>
               </tr> */ }
       </Container>
+              
+
+      <br />
+      <div className="cart-total-price">
+        <label>Total price to pay:</label>
+        <br />
+        <span>${renderTotalPrice(productsInCart)}</span>
+      </div>
+
+      {/*Payment checkout */}
+      <br />
+      <Link to="checkout" className="btn btn-dark">
+        Buy Now
+      </Link>
     </div>
-    </>
   ) : (
-    <p className="three-dots">...</p>
+    cartEmptyMessage()
   );
 };
-{/* <button
-                className="btn btn-dark"
-                onClick={() => {
-                  handleDeleteAll();
-                }}
-              ></button> */}
+
 export default Cart;

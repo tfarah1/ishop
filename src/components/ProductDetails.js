@@ -13,11 +13,14 @@ const ProductDetails = () => {
   const url = "https://fakestoreapi.com/products/";
 
   useEffect(() => {
-    fetch(url + id,{
-      
-      method:"get",data:{},
-      headers
-    :{"access-token":"5353353-5353-535353", "Content-Type":'application/json'}})
+    fetch(url + id, {
+      method: "get",
+      data: {},
+      headers: {
+        "access-token": "5353353-5353-535353",
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw Error("Can not connect to the server!.");
@@ -34,19 +37,16 @@ const ProductDetails = () => {
 
   return (
     <div className="box" key={product.id}>
-      <Container >
-      <Row>
-        <Col><Row>
-        <h1>{product.title}</h1>
-        </Row></Col>
-        <Col><Sale Title={product.title} Image={product.image} Category={product.category}/></Col>
-        {/* <Col></Col> */}
-      </Row>
-       
-             
-      </Container>
-      
-      </div> 
+      <h1>{product.title}</h1>
+      <p>Category: {product.category}</p>
+      <p>Description: {product.description}</p>
+      <p>Price: {product.price}$</p>
+      <img
+        style={{ height: "250px", width: "250px" }}
+        src={product.image}
+        alt="product"
+      ></img>
+    </div>
   );
 };
 

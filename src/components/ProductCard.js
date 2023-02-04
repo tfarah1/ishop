@@ -1,16 +1,20 @@
 import React from "react";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { FiTag } from "react-icons/fi";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+// import { getProducts } from "../features/products";
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
   const handleClick = (product) => {
     //POST product in CART
-    console.log(product);
+    // console.log(product);
+    dispatch({ type: "products/addToCart", payload: product });
   };
 
   return (
-    <div className="card-box" key={product.key}>
+    <div className="card-box" key={product.id}>
       <div className="card-top">
         <FiTag className="card-tag" />
         <span className="card-category">{product.category.toUpperCase()}</span>
@@ -27,7 +31,9 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="card-bottom">
-        <span className="card-price"><strong>${product.price}</strong></span>
+        <span className="card-price">
+          <strong>${product.price}</strong>
+        </span>
         <BsFillCartPlusFill
           className="card-cart"
           onClick={() => handleClick(product)}

@@ -1,74 +1,74 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setProducts as setProds } from "../features/products";
+import { getProducts } from "../features/productsSlice";
 import SkeletonCustomized from "./common/SkeletonCustomized";
 import Filter from "./common/Filter";
 
 const Products = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const products = useSelector((state) => state.products.products);
 
   const [category, setCategory] = useState(null);
-  const [clicked, setClicked] = useState(true);
-  const url = "https://fakestoreapi.com/products/";
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw Error("Can not connect to the server!.");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // console.log(data);
-        dispatch(setProds(data));
-      })
-      .catch((e) => {
-        console.log(e.message);
-      });
-    // added dispatch
-  }, [url, dispatch]);
+    dispatch(getProducts());
+  });
 
   const showSkeleton = () => {
     return <SkeletonCustomized />;
   };
 
   const showProducts = () => {
-    return (
-      <Filter
-        products={products}
-        searchQuery={searchQuery}
-        category={category}
-      />
-    );
+    return <Filter products={products} category={category} />;
   };
 
   const btnDecorator = () => {
-    return clicked ? "btn btn-dark" : "btn btn-outline-dark";
+    return category === null ? "btn btn-dark" : "btn btn-outline-dark";
+  };
+
+  const womenBtnDecorator = () => {
+    return category === "women's clothing"
+      ? "btn btn-dark"
+      : "btn btn-outline-dark";
+  };
+
+  // const handleClicked = (e) => {
+  //   setCategory(e.target.id);
+  //   buttonDecorator(e.target.id);
+  // };
+
+  // const buttonDecorator = (buttonID) => {
+  //   return category === buttonID ? "btn btn-dark" : "btn btn-outline-dark";
+  // };
+
+  const menBtnDecorator = () => {
+    return category === "men's clothing"
+      ? "btn btn-dark"
+      : "btn btn-outline-dark";
+  };
+
+  const jeweleryBtnDecorator = () => {
+    return category === "jewelery" ? "btn btn-dark" : "btn btn-outline-dark";
+  };
+
+  const electronicsBtnDecorator = () => {
+    return category === "electronics" ? "btn btn-dark" : "btn btn-outline-dark";
   };
 
   return (
     <div className="main">
-      <input
-        style={{ paddingBottom: "20" }}
-        placeholder="Search..."
-        onChange={(event) => setSearchQuery(event.target.value)}
-      />
       <div className="buttons">
         <button
           className={btnDecorator()}
           onClick={() => {
             setCategory(null);
-            setClicked(true);
           }}
         >
           All
         </button>
         <button
-          className="btn btn-outline-dark"
+          className={womenBtnDecorator()}
           onClick={() => {
             setCategory("women's clothing");
           }}
@@ -76,7 +76,7 @@ const Products = () => {
           Women
         </button>
         <button
-          className="btn btn-outline-dark"
+          className={menBtnDecorator()}
           onClick={() => {
             setCategory("men's clothing");
           }}
@@ -84,7 +84,7 @@ const Products = () => {
           Men
         </button>
         <button
-          className="btn btn-outline-dark"
+          className={jeweleryBtnDecorator()}
           onClick={() => {
             setCategory("jewelery");
           }}
@@ -92,7 +92,7 @@ const Products = () => {
           Jewelery
         </button>
         <button
-          className="btn btn-outline-dark"
+          className={electronicsBtnDecorator()}
           onClick={() => {
             setCategory("electronics");
           }}
