@@ -1,3 +1,4 @@
+import "./components/Database";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -6,7 +7,6 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import './Firebase'
 import productsReducer from "./features/productsSlice";
 
 const store = configureStore({

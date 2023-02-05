@@ -193,6 +193,7 @@
 // export default Login;
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { signIn } from "./SigninFirebase";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -204,6 +205,7 @@ function Login() {
     e.preventDefault();
     userData.push({ username: username, password: password });
     //authentication
+    signIn(username, password);
     // signInWithEmailAndPassword(username, password)
     console.log(userData);
   };

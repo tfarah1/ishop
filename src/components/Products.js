@@ -7,7 +7,7 @@ import Filter from "./common/Filter";
 
 const Products = () => {
   const products = useSelector((state) => state.products.products);
-  console.log(products);
+  // console.log(products);
   const [category, setCategory] = useState(null);
   const dispatch = useDispatch();
 

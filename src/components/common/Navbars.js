@@ -1,14 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { FaSignInAlt, FaUser } from "react-icons/fa";
 import Search from "./Search";
+import { onAuthStateChanged, signOut } from "@firebase/auth";
+import { auth } from "../Database";
 
 const Navbars = () => {
   const productsInCart = useSelector((state) => state.products.cart) || [];
 
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+      setUser(user);
+    });
+  }, []);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="/">
@@ -48,9 +64,15 @@ const Navbars = () => {
             </a>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/login">
+            <div
+              onClick={() => {
+                signOut(auth);
+              }}
+              className="nav-link"
+              to="/logout"
+            >
               <FaSignInAlt /> Login
-            </NavLink>
+            </div>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/signup">

@@ -1,32 +1,13 @@
-// import React from "react";
-
-// const Signup = () => {
-//   return (
-//     <div className="form">
-//       <form>
-//         <div className="input-container">
-//           <label>Username </label>
-//           <input type="text" name="uname" required />
-//         </div>
-//         <div className="input-container">
-//           <label>Password </label>
-//           <input type="password" name="pass" required />
-//         </div>
-//         <div className="button-container">
-//           <input type="submit" />
-//         </div>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Signup;
-
-//               ////
-
-
 import React from "react";
 import { useState } from "react";
+import { db } from "./Database";
+import { newUser } from "./SignupFirebase";
+import { getDatabase, ref, set } from "firebase/database";
+
+function writeUserData(userId, data) {
+  // const db = getDatabase();
+  set(ref(db, "users/" + userId), data);
+}
 
 function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -35,12 +16,24 @@ function Signup() {
   const [password, setPassword] = useState(0);
 
   // user info obj
-  const userData = [];
+  let userData = {};
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    userData.push({firstName:firstName, lastName:lastName, username:username, password:password});
-    // register link to database
+    userData = {
+      firstName: firstName,
+      lastName: lastName,
+      username: username,
+    };
+    newUser(username, password)
+      .then((user) => {
+        console.log(user);
+        //update user data
+        writeUserData(user.uid, userData);
+        // db;
+      })
+      .catch((e) => console.log(e));
+    //
     console.log(userData);
   };
 
