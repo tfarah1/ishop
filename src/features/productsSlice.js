@@ -1,19 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { getDatabase, ref, onValue} from "firebase/database";
 export const getProducts = () => (dispatch) => {
-  fetch("https://fakestoreapi.com/products/")
-    .then((response) => {
-      if (!response.ok) {
-        throw Error("Can't connect to the server!");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      dispatch({ type: "products/setProducts", payload: data });
-    })
-    .catch((e) => {
-      console.log(e.message);
-    });
+
+  const db = getDatabase();
+  const Productref = ref(db, "products");
+onValue(Productref, (snapshot) => {
+  const data = snapshot.val();
+  console.log(data);
+  dispatch({ type: "products/setProducts", payload: data })
+  
+});
+
+
+
+  // db.ref('https://laser-c7594-default-rtdb.firebaseio.com/products')
+  //   .then((response) => {
+  //     if (!response.ok) {
+  //       throw Error("Can't connect to the server!");
+  //     }
+  //     return response.json();
+  //   })
+  //   .then((data) => {
+  //     dispatch({ type: "products/setProducts", payload: data });
+  //   })
+  //   .catch((e) => {
+  //     console.log(e.message);
+  //   });
 };
 
 const calculateTotal = (cart) => {

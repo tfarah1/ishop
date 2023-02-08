@@ -1,0 +1,13 @@
+{
+    "users":{
+        "key":{
+            "logininfo":{
+                "name":"",
+                "email":"",
+                "pass":""
+        },
+        "items":{
+            "category":
+        }
+    }
+}
