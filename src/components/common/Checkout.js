@@ -21,22 +21,31 @@ function Checkout() {
   const [date, setDate] = useState(defaultDate);
 
   // user info obj
-  const userData = [];
+  let userData = {};
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    userData.push(
-      firstName,
-      lastName,
-      address,
-      zip,
-      date,
-      { productsInCart },
-      totalPrice
-    );
+    userData = {
+      firstName: firstName,
+      lastName: lastName,
+      address: address,
+      zip: zip,
+      date: date,
+      productsInCart: productsInCart,
+      totalPrice: totalPrice,
+    };
+    // userData.push(
+    //   firstName,
+    //   lastName,
+    //   address,
+    //   zip,
+    //   date,
+    //   { productsInCart },
+    //   totalPrice
+    // );
     dispatch({ type: "products/delAllFromCart" });
     alert("Your order is on its way...");
     setTimeout(() => {
@@ -107,7 +116,7 @@ function Checkout() {
       />
       <br />
       <br />
-      <button type="submit" value="checkout" className="btn btn-dark">
+      <button type="submit" value="checkout" className="btn btn-dark btn-block">
         Checkout
       </button>
     </form>

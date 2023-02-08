@@ -7,10 +7,10 @@ import Cart from "./components/Cart";
 import Copyrights from "./components/common/Copyrights";
 import Products from "./components/Products";
 import "bootstrap/dist/css/bootstrap.css";
-import Login from "./components/Login";
+import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import Checkout from "./components/common/Checkout";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./components/Database";
 import { useEffect, useState } from "react";
 
@@ -22,7 +22,7 @@ function App() {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
+        // const uid = user.uid;
         // ...
       } else {
         // User is signed out
@@ -31,6 +31,8 @@ function App() {
       setUser(user);
     });
   }, []);
+  if (user) console.log(user.uid);
+
   return (
     <div>
       <Navbars />
@@ -47,8 +49,9 @@ function App() {
           </>
         ) : (
           <>
-            <Route path="/" element={<Login />}></Route>
+            <Route path="/" element={<Signin />}></Route>
             <Route path="signup" element={<Signup />}></Route>
+            <Route path="signin" element={<Signin />}></Route>
           </>
         )}
       </Routes>

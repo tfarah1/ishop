@@ -191,15 +191,18 @@
 // }
 
 // export default Login;
-import { signInWithEmailAndPassword } from "firebase/auth";
+// import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { signIn } from "./SigninFirebase";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const userData = [];
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -207,6 +210,7 @@ function Login() {
     //authentication
     signIn(username, password);
     // signInWithEmailAndPassword(username, password)
+navigate('/');
     console.log(userData);
   };
 

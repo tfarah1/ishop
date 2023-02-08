@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { db } from "./Database";
 import { newUser } from "./SignupFirebase";
-import { getDatabase, ref, set } from "firebase/database";
+import { ref, set } from "firebase/database";
+import { useNavigate } from "react-router-dom";
 
 function writeUserData(userId, data) {
   // const db = getDatabase();
@@ -14,6 +15,7 @@ function Signup() {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState(0);
+  const navigate = useNavigate();
 
   // user info obj
   let userData = {};
@@ -34,6 +36,7 @@ function Signup() {
       })
       .catch((e) => console.log(e));
     //
+    navigate('/');
     console.log(userData);
   };
 
@@ -89,7 +92,7 @@ function Signup() {
       <br />
       <br />
       <button type="submit" value="checkout" className="btn btn-dark">
-        Login
+        Register
       </button>
     </form>
   );

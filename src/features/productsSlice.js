@@ -1,5 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
-// import { createReducer, createAction, current } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 export const getProducts = () => (dispatch) => {
   fetch("https://fakestoreapi.com/products/")
@@ -16,12 +15,12 @@ export const getProducts = () => (dispatch) => {
       console.log(e.message);
     });
 };
+
 const calculateTotal = (cart) => {
-  console.log("calcu total");
+  // console.log("calcu total");
   let total = 0;
-  let len = cart.length;
-  if (len > 0) {
-    for (let i = 0; i < len; i++) {
+  if (cart.length > 0) {
+    for (let i = 0; i < cart.length; i++) {
       total += cart[i].price * cart[i].productUnits;
     }
     return total;
@@ -73,14 +72,18 @@ export const productsSlice = createSlice({
     },
     addAnotherToCart: (state, action) => {
       let index = state.cart.findIndex((p) => p.id === action.payload);
+      // check count in database
       if (index > -1) {
         state.cart[index].productUnits++;
         state.totalPrice = calculateTotal(state.cart);
       }
     },
     delAllFromCart: (state) => {
+      console.log("del all")
       state.cart = [];
       state.totalPrice = calculateTotal(state.cart);
+      console.log("after del all")
+
     },
   },
 });

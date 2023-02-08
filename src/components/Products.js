@@ -23,15 +23,11 @@ const Products = () => {
     return <Filter products={products} category={category} />;
   };
 
-  const btnDecorator = () => {
-    return category === null ? "btn btn-dark" : "btn btn-outline-dark";
-  };
+  const btnDecorator =
+    category === null ? "btn btn-dark" : "btn btn-outline-dark";
 
-  const womenBtnDecorator = () => {
-    return category === "women's clothing"
-      ? "btn btn-dark"
-      : "btn btn-outline-dark";
-  };
+  const womenBtnDecorator =
+    category === "women's clothing" ? "btn btn-dark" : "btn btn-outline-dark";
 
   // const handleClicked = (e) => {
   //   setCategory(e.target.id);
@@ -44,19 +40,18 @@ const Products = () => {
 
   const menBtnDecorator =
     category === "men's clothing" ? "btn btn-dark" : "btn btn-outline-dark";
-  const jeweleryBtnDecorator = () => {
-    return category === "jewelery" ? "btn btn-dark" : "btn btn-outline-dark";
-  };
 
-  const electronicsBtnDecorator = () => {
-    return category === "electronics" ? "btn btn-dark" : "btn btn-outline-dark";
-  };
+  const jeweleryBtnDecorator =
+    category === "jewelery" ? "btn btn-dark" : "btn btn-outline-dark";
+
+  const electronicsBtnDecorator =
+    category === "electronics" ? "btn btn-dark" : "btn btn-outline-dark";
 
   return (
     <div className="main">
       <div className="buttons">
         <button
-          className={btnDecorator()}
+          className={btnDecorator}
           onClick={() => {
             setCategory(null);
           }}
@@ -64,7 +59,7 @@ const Products = () => {
           All
         </button>
         <button
-          className={womenBtnDecorator()}
+          className={womenBtnDecorator}
           onClick={() => {
             setCategory("women's clothing");
           }}
@@ -80,7 +75,7 @@ const Products = () => {
           Men
         </button>
         <button
-          className={jeweleryBtnDecorator()}
+          className={jeweleryBtnDecorator}
           onClick={() => {
             setCategory("jewelery");
           }}
@@ -88,7 +83,7 @@ const Products = () => {
           Jewelery
         </button>
         <button
-          className={electronicsBtnDecorator()}
+          className={electronicsBtnDecorator}
           onClick={() => {
             setCategory("electronics");
           }}

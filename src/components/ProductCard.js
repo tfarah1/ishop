@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-  const handleClick = (product) => {
+  const handleAddProduct = (product) => {
     //POST product in CART
     // console.log(product);
     dispatch({ type: "products/addToCart", payload: product });
@@ -36,7 +36,7 @@ const ProductCard = ({ product }) => {
         </span>
         <BsFillCartPlusFill
           className="card-cart"
-          onClick={() => handleClick(product)}
+          onClick={() => handleAddProduct(product)}
           cursor="pointer"
         />
       </div>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { AiFillDelete } from "react-icons/ai";
+// import { AiFillDelete } from "react-icons/ai";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -31,18 +31,15 @@ const Cart = () => {
     dispatch({ type: "products/addAnotherToCart", payload: id });
   };
 
-  const renderTotalPrice = () => {
-    let total = 0;
-    if (productsInCart.length > 0) {
-      for (let i = 0; i < productsInCart?.length; i++) {
-        total += productsInCart[i].price * productsInCart[i].productUnits;
-      }
-    }
-    return total;
-    // dispatch({ type: "products/renderTotalPrice" , payload: total});
-  };
   // const renderTotalPrice = () => {
-  //   dispatch({ type: "products/renderTotalPrice" });
+  //   let total = 0;
+  //   if (productsInCart.length > 0) {
+  //     for (let i = 0; i < productsInCart?.length; i++) {
+  //       total += productsInCart[i].price * productsInCart[i].productUnits;
+  //     }
+  //   }
+  //   return total;
+  //   // dispatch({ type: "products/renderTotalPrice" , payload: total});
   // };
 
   const cartEmptyMessage = () => {
@@ -68,6 +65,7 @@ const Cart = () => {
           <Col>Units</Col>
           <Col></Col>
           <Col></Col>
+          <Col><button className="btn btn-outline-danger" onClick={handleDeleteAll}>Delete all</button></Col>
         </Row>
         {productsInCart.map((product) => {
           return (
@@ -91,13 +89,13 @@ const Cart = () => {
               </Col>
 
               <Col>
-                {" "}
                 <HiMinusCircle
                   className="cart-delete"
                   style={{ cursor: "pointer" }}
                   onClick={() => handleDelete(product.id)}
                 ></HiMinusCircle>
               </Col>
+              <Col></Col>
             </Row>
           );
         })}
@@ -110,7 +108,6 @@ const Cart = () => {
         <span>${totalPrice}</span>
       </div>
 
-      {/*Payment checkout */}
       <br />
       <Link to="checkout" className="btn btn-dark">
         Buy Now
