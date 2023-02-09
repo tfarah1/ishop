@@ -41,60 +41,58 @@ function Signup() {
   };
 
   return (
-    <form
-      className="main"
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-    >
-      <label>First Name:</label>
-      <br />
-      <input
-        required
-        name="firstName"
-        type="text"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
+    <div className="form">
+      <form
+        className="main"
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}>
+        <h2 className="login-header">Register</h2> 
 
-      <br />
-      <label>Last Name:</label>
-      <br />
-      <input
-        required
-        name="lastName"
-        type="text"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-      />
-
-      <br />
-      <label>Username: </label>
-      <br />
-      <input
-        required
-        name="username"
-        type="email"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-
-      <br />
-      <label>Password: </label>
-      <br />
-      <input
-        required
-        name="password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br />
-      <br />
-      <button type="submit" value="checkout" className="btn btn-dark">
-        Register
-      </button>
-    </form>
+      <div className="input-container">       
+        <input
+          required
+          name="firstName"
+          type="text"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}/>
+          <label>First Name</label>
+      </div>
+      <div className="input-container">       
+        <input
+          required
+          name="lastName"
+          type="text"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}/>
+          <label>Last Name</label>
+      </div>
+      <div className="input-container">       
+        <input
+          required
+          name="username"
+          type="email"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}/>
+          <label>Email</label>
+      </div>
+      <div className="input-container">       
+        <input
+          required
+          name="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}/>
+          <label>Password</label>
+      </div>
+      <div className="button-container">
+         <button className="sui" value="checkout" type="submit">Register</button>
+      </div>
+      <div className="register-link">
+        <p>Already have an account? <a href="http://localhost:3000/Signin">Login</a></p>
+      </div>
+      </form>
+    </div>
   );
 }
 
