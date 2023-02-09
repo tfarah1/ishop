@@ -1,17 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDatabase, ref, onValue} from "firebase/database";
+import { getDatabase, ref, onValue } from "firebase/database";
 export const getProducts = () => (dispatch) => {
-
   const db = getDatabase();
   const Productref = ref(db, "products");
-onValue(Productref, (snapshot) => {
-  const data = snapshot.val();
-  console.log(data);
-  dispatch({ type: "products/setProducts", payload: data })
-  
-});
-
-
+  onValue(Productref, (snapshot) => {
+    const data = Object.values(snapshot.val());
+     console.log(data);
+    dispatch({ type: "products/setProducts", payload: data });
+  });
 
   // db.ref('https://laser-c7594-default-rtdb.firebaseio.com/products')
   //   .then((response) => {
@@ -91,11 +87,10 @@ export const productsSlice = createSlice({
       }
     },
     delAllFromCart: (state) => {
-      console.log("del all")
+      console.log("del all");
       state.cart = [];
       state.totalPrice = calculateTotal(state.cart);
-      console.log("after del all")
-
+      console.log("after del all");
     },
   },
 });

@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import productsReducer from "./features/productsSlice";
-import { Database } from "firebase/database";
+// import { Database } from "firebase/database";
 
 const store = configureStore({
   reducer: {
