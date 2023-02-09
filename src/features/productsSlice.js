@@ -7,6 +7,7 @@ export const getProducts = () => (dispatch) => {
     const data = Object.values(snapshot.val());
      console.log(data);
     dispatch({ type: "products/setProducts", payload: data });
+      console.log(data)
   });
 
   // db.ref('https://laser-c7594-default-rtdb.firebaseio.com/products')

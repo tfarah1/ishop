@@ -358,6 +358,11 @@ td {
   height: 25px;
   width: 25px;
   border-radius: 50px;
+  font-size: 14px;
+  /* padding: 5px; */
+  height: 25px;
+  width: 25px;
+  border-radius: 20px;
   background-color: rgb(204, 184, 228);
   display: flex;
   justify-content: center;
@@ -386,5 +391,18 @@ td {
 .collapse {
   display: flex;
   justify-content: center;
+  padding-right: 50px;
+  display: flex;
+  justify-content: space-between;
 }
 
+
+navbar {
+  align-items: normal;
+}
+
+
+.navbar navbar-expand-lg navbar-light bg-light{
+  display: flex;
+  justify-content: space-between;
+}
