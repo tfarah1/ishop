@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import { AiFillDelete } from "react-icons/ai";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -86,8 +85,7 @@ const Cart = () => {
                   style={{ cursor: "pointer" }}
                   onClick={() => handleAddProduct(product.id)}
                 ></BsPlusCircleFill>
-              </Col>
-
+              </Col> 
               <Col>
                 <HiMinusCircle
                   className="cart-delete"

@@ -8,7 +8,6 @@ function Login() {
   const navigate = useNavigate();
 
   const userData = [];
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +15,7 @@ function Login() {
     //authentication
     signIn(username, password);
     // signInWithEmailAndPassword(username, password)
-navigate('/');
+    navigate("/");
     console.log(userData);
   };
 
