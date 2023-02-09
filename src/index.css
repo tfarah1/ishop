@@ -27,7 +27,7 @@ body {
   margin: 0 20px 0 20px;
 }
 .navlinks{
-  margin: 0 30px 0 30px;
+  margin: 4px 30px 4px 30px;
   font-size: 20px;
   font-weight: 500; 
   display:flex;
@@ -40,6 +40,21 @@ body {
   color: #808080;
   font-size: 22px;
 }
+.nav-links{
+  margin: 4px 5px 4px 30px;
+  font-size: 20px;
+  font-weight: 500; 
+  display:flex;
+  text-decoration: none;
+  color: #000000;
+  align-items:center;
+  transition: 0.5s ease-in-out;
+}
+.nav-links:hover{
+  color: #808080;
+  font-size: 22px;
+}
+
 .navigation{
    display: flex;
    justify-content: flex-start;
@@ -50,6 +65,7 @@ body {
   height: 40px;
   font-size: 17px;
   font-weight: 500;
+  margin: 4px 0 4px 0;
   padding-left: 10px;
   border-color: #000000;
   transition: 0.6s ease-in-out;
@@ -77,6 +93,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .icon-log{
   display: inline-flex;
@@ -88,16 +105,6 @@ body {
   display: flex;
   justify-content: space-between;
 } */
-
-#footer{
-  padding-top: 2% ;
-  padding-bottom: 2%;
-  text-align: center;
-}
-.iconss{
-  margin:6px;
-  padding-bottom: 10px;
-}
 
 #footer{
   padding-top: 2% ;

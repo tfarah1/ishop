@@ -111,7 +111,7 @@ const Navbars = () => {
           
           {user ? (
             <>
-          <li className="counter"><NavLink className="navlinks" to="/cart">Cart</NavLink> 
+          <li className="counter"><NavLink className="nav-links" to="/cart">Cart</NavLink> 
           <span className="cart-counter">{productsInCart.length}</span>
           </li>
           <div
