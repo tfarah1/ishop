@@ -46,7 +46,7 @@ navigate('/');
           onChange={(e) => setPassword(e.target.value)}/>
           <label>Password</label>
       </div>
-      <div className="remember-forget">
+      {/* <div className="remember-forget">
           <div className="remember">
             <input type="checkbox"/>
             <label>Remember Me</label>
@@ -54,7 +54,7 @@ navigate('/');
           <div className="forget">
             <a href="/">Forget Password?</a>
           </div>
-        </div>
+        </div> */}
       <div className="button-container">
          <button className="sui" value="checkout" type="submit">Login</button>
       </div>

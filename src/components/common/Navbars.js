@@ -5,6 +5,10 @@ import { FaSignInAlt, FaUser } from "react-icons/fa";
 import Search from "./Search";
 import { onAuthStateChanged, signOut } from "@firebase/auth";
 import { auth } from "../Database";
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 const Navbars = () => {
   const productsInCart = useSelector((state) => state.products.cart) || [];
@@ -28,73 +32,106 @@ const Navbars = () => {
     });
   }, []);
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <NavLink className="navbar-brand" to="/">
-        iShop
-      </NavLink>
+    // <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    //   <NavLink className="navbar-brand" to="/">
+    //     iShop
+    //   </NavLink>
 
-      <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li className="nav-item active">
-            <NavLink className="nav-link" to="/">
-              Home
-            </NavLink>
-          </li>
-          {/* <li className="nav-item">
-            <NavLink className="nav-link" to="/cart">
-              Cart
-            </NavLink>
-            <span className="cart-counter">{productsInCart.length}</span>
-          </li> */}
-          <li className="nav-item">
-            <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-          </li>
-          <li className="nav-item search-box-container">
-            <a className="nav-link" href="#footer">
-              Contact us
-            </a>
-          </li>
+    //   <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+    //     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+    //       <li className="nav-item active">
+    //         <NavLink className="nav-link" to="/">
+    //           Home
+    //         </NavLink>
+    //       </li>
+    //       {/* <li className="nav-item">
+    //         <NavLink className="nav-link" to="/cart">
+    //           Cart
+    //         </NavLink>
+    //         <span className="cart-counter">{productsInCart.length}</span>
+    //       </li> */}
+    //       <li className="nav-item">
+    //         <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
+    //       </li>
+    //       <li className="nav-item search-box-container">
+    //         <a className="nav-link" href="#footer">
+    //           Contact us
+    //         </a>
+    //       </li>
+    //       {user ? (
+    //         <>
+    //           <li className="nav-item">
+    //             <NavLink className="nav-link" to="/cart">
+    //               Cart
+    //             </NavLink>
+    //             <span className="cart-counter">{productsInCart.length}</span>
+    //           </li>
+    //           <li className="nav-item">
+    //             <div
+    //               onClick={() => {
+    //                 navigate("/");
+    //                 signOut(auth);
+    //               }}
+    //               className="nav-link"
+    //               style={{ cursor: "pointer" }}
+    //               to="/logout">
+    //               <FaSignInAlt /> Log out
+    //             </div></li></>
+    //       ) : (
+    //         <>
+    //           <li className="nav-item">
+    //             <NavLink className="nav-link" to="/signin">
+    //               <FaSignInAlt /> Sign in
+    //             </NavLink>
+    //           </li>
+
+    //           <li className="nav-item">
+    //             <NavLink className="nav-link" to="/signup">
+    //               <FaUser /> Sign up
+    //             </NavLink>
+    //           </li>
+    //         </>
+    //          )}
+    //     </ul>
+    //     <form className="form-inline my-2 my-lg-0"></form>
+    //   </div>
+    // </nav>
+
+  <Navbar className='nav' bg="" expand="lg">
+    <Container fluid className='nav1'>
+      <Navbar.Brand id='logo' href="/">iShop</Navbar.Brand>
+      <Navbar.Toggle aria-controls="navbarScroll" />
+      <Navbar.Collapse id="navbarScroll">
+        <Nav className="navigation me my-2 my-lg-0" style={{ maxHeight: '200px' }} navbarScroll>
+          <NavLink className="navlinks" to="/">Home</NavLink>
+          <a className="navlinks" href="#footer">Contacts</a>
+          <Form className="search">
+          <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
+          </Form>
+          
           {user ? (
             <>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/cart">
-                  Cart
-                </NavLink>
-                <span className="cart-counter">{productsInCart.length}</span>
-              </li>
-              <li className="nav-item">
-                <div
-                  onClick={() => {
-                    navigate("/");
-                    signOut(auth);
-                  }}
-                  className="nav-link"
+          <li className="counter"><NavLink className="navlinks" to="/cart">Cart</NavLink> 
+          <span className="cart-counter">{productsInCart.length}</span>
+          </li>
+          <div
+              onClick={() => {navigate("/");signOut(auth);}}
+                  className="navlinks"
                   style={{ cursor: "pointer" }}
-                  to="/logout"
-                >
-                  <FaSignInAlt /> Sign out
-                </div>
-              </li>
-            </>
-          ) : (
-            <>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/signin">
-                  <FaSignInAlt /> Sign in
-                </NavLink>
-              </li>
-
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/signup">
-                  <FaUser /> Sign up
-                </NavLink>
-              </li>
-            </>
+                  to="/logout">
+                  Logout <FaSignInAlt className="icon-log"/></div>
+          </>
+          ):(
+          <>
+          <NavLink className="navlinks" to="/Signin"> Login <FaSignInAlt className="icon-log" /></NavLink>
+          <NavLink className="navlinks" to="/Signup"> Register <FaUser className="icon-log" /></NavLink>
+          </>
           )}
-        </ul>
-        <form className="form-inline my-2 my-lg-0"></form>
-      </div>
-    </nav>
+          
+          </Nav> 
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
   );
 };
 

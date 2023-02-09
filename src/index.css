@@ -2,34 +2,85 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
-  /* background-color:  white; */
 }
 
 html {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  /* background: #333; */
-  /* color: whitesmoke; */
-  /* color: black; */
 }
 
 body {
   min-height: 100vh;
   font-size: 1.5rem;
-  /* padding: 0 10% 10%; */
+}
+.nav{
+  background: linear-gradient(to right , white, #dbd9d9 );
+  box-shadow: 0px 2px 10px #b9b8ba;
+}
+#logo{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  transition: 0.3s ease-in-out;
+  margin: 0 20px 0 20px;
+}
+.navlinks{
+  margin: 0 30px 0 30px;
+  font-size: 20px;
+  font-weight: 500; 
+  display:flex;
+  text-decoration: none;
+  color: #000000;
+  align-items:center;
+  transition: 0.5s ease-in-out;
+}
+.navlinks:hover{
+  color: #808080;
+  font-size: 22px;
+}
+.navigation{
+   display: flex;
+   justify-content: flex-start;
+}
+.search-box{
+  width: 230px;
+  border-radius: 20px;
+  height: 40px;
+  font-size: 17px;
+  font-weight: 500;
+  padding-left: 10px;
+  border-color: #000000;
+  transition: 0.6s ease-in-out;
+}
+.search-box:hover{
+  font-size: 19px;
+  font-weight: 550;
+}
+.search{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 30px;
+}
+.counter{
+  display: flex;
 }
 
-/* input,
-textarea,
-button,
-select {
-  font: inherit;
-  margin-bottom: 1em;
-} */
-
-.container-fluid {
+.cart-counter {
+  font-size: 14px;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  background-color: rgb(210, 207, 207);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+}
+.icon-log{
+  display: inline-flex;
+  margin-left: 20px;
 }
 
 /*ADDED CSS*/
@@ -38,39 +89,30 @@ select {
   justify-content: space-between;
 }
 
-.footer {
-  position: relative;
-  left: 0;
-  bottom: 0;
-  right: 0;
+#footer{
+  padding-top: 2% ;
+  padding-bottom: 2%;
+  text-align: center;
 }
-
-.copyrights {
-  display: flex;
-  justify-content: center;
-  /* background-color: blueviolet; */
-  /* background-color: white; */
-  background-color: #f8f9fa;
-  padding: 50px 80px 50px 80px;
-  margin-top: 100px;
-  margin-bottom: 0px;
+.iconss{
+  margin:6px;
+  padding-bottom: 10px;
 }
-
-/*NAVBAR*/
-/* .navbar {
-  padding-bottom: 100px;
-  background-color: blueviolet;
-  padding: 40px;
-}
-
-.nav-link {
-  justify-content: space-around;
-} */
-
 Link {
-  color: white;
+  color: rgb(0, 0, 0);
 }
-
+.footer-icons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.copy{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 15px;
+}
 /*PRODUCT CARD*/
 .card-row {
   display: grid;
@@ -175,6 +217,52 @@ Link {
 
 .btn {
   width: 100px;
+}
+
+/* PRODUCT PAGE */
+
+.box{
+  margin: 100px 0 100px 0;
+}
+.img{
+  border: solid rgb(0, 0, 0);
+  border-radius: 20px;
+  padding: 20px;
+  margin-left: 20px;
+}
+.line{
+  opacity: 0.6;
+  border-width: 1px;
+}
+
+#title1{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 550;
+  color: #808080;
+}
+#cat1{
+  font-size: 25px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+#des1{
+  margin: 50px 0 50px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 450;
+}
+#pr1{
+  margin: auto 0 auto 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+}
+#prod-cart{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 40px;
+  color:#808080 ;
 }
 
 /* Login-Signup Done*/
@@ -356,16 +444,7 @@ td {
   justify-content: center;
 }
 
-.cart-counter {
-  font-size: 14px;
-  padding: 5px;
-  height: 30px;
-  width: 30px;
-  border-radius: 20px;
-  background-color: rgb(204, 184, 228);
-  display: flex;
-  justify-content: center;
-}
+
 
 .cart-empty {
   display: block;
@@ -373,15 +452,4 @@ td {
   color: rgb(98, 97, 97);
 }
 
-.search-box-container {
-  width: 300px;
-}
-.search-box {
-  padding: 5px 0 5px 10px;
-  border-radius: 25px;
-  width: 100%;
-}
 
-.nav-item {
-  padding-right: 50px;
-}
