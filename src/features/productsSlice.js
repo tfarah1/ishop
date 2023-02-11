@@ -94,7 +94,7 @@ export const productsSlice = createSlice({
     addAnotherToCart: (state, action) => {
       let index = state.cart.findIndex((p) => p.id === action.payload.id);
       // check count in database
-      // units >=
+      // units >= 
       if (index > -1) {
         state.cart[index].productUnits++;
         state.totalPrice = calculateTotal(state.cart);

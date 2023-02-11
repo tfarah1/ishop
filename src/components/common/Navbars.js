@@ -105,12 +105,14 @@ const Navbars = () => {
         <Nav className="navigation me my-2 my-lg-0" style={{ maxHeight: '200px' }} navbarScroll>
           <NavLink className="navlinks" to="/">Home</NavLink>
           <a className="navlinks" href="#footer">Contacts</a>
-          <Form className="search">
-          <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-          </Form>
+          
           
           {user ? (
             <>
+
+<Form className="search">
+          <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
+          </Form>
           <li className="counter"><NavLink className="nav-links" to="/cart">Cart</NavLink> 
           <span className="cart-counter">{productsInCart.length}</span>
           </li>
