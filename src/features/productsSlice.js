@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set, push } from "firebase/database";
 export const getProducts = () => (dispatch) => {
   const db = getDatabase();
   const Productref = ref(db, "products");
   onValue(Productref, (snapshot) => {
     const data = Object.values(snapshot.val());
-     console.log(data);
+    console.log(data);
     dispatch({ type: "products/setProducts", payload: data });
-      console.log(data)
+    console.log(data);
   });
 
   // db.ref('https://laser-c7594-default-rtdb.firebaseio.com/products')
@@ -66,6 +66,18 @@ export const productsSlice = createSlice({
         state.cart = [...state.cart, item];
       }
       state.totalPrice = calculateTotal(state.cart);
+
+      //write
+      //product.id
+      const db = getDatabase();
+      const Productref = ref(db, "Cart/");
+      const data = action.payload;
+      function writeUserData(data) {
+        push(Productref, {
+          data: data,
+        });
+      }
+      writeUserData(data);
     },
     delProductFromCart: (state, action) => {
       let index = state.cart.findIndex((p) => p.id === action.payload);
@@ -80,8 +92,9 @@ export const productsSlice = createSlice({
       }
     },
     addAnotherToCart: (state, action) => {
-      let index = state.cart.findIndex((p) => p.id === action.payload);
+      let index = state.cart.findIndex((p) => p.id === action.payload.id);
       // check count in database
+      // units >=
       if (index > -1) {
         state.cart[index].productUnits++;
         state.totalPrice = calculateTotal(state.cart);

@@ -7,39 +7,51 @@ import { useParams } from "react-router-dom";
 // import Col from 'react-bootstrap/Col';
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-
+import { getDatabase, ref, onValue } from "firebase/database";
 
 const ProductDetails = () => {
+  const { id } = useParams();
+  const db = getDatabase();
+  const Productref = ref(db, "products/" + id) ;
+  onValue(Productref, (snapshot) => {
+    const data = Object.values(snapshot.val());
+     console.log(data);
+    // dispatch({ type: "products/setProducts", payload: data });
+      // console.log(data)
+  });
+
+
   const dispatch = useDispatch();
   const handleClick = (product) => {
     dispatch({ type: "products/addToCart", payload: product });
   };
-  const { id } = useParams();
+ 
   const [product, setProduct] = useState([]);
-  const url = "https://fakestoreapi.com/products/";
+  // const url = "https://fakestoreapi.com/products/";
 
-  useEffect(() => {
-    fetch(url + id, {
-      method: "get",
-      data: {},
-      headers: {
-        "access-token": "5353353-5353-535353",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw Error("Can not connect to the server!.");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setProduct(data);
-      })
-      .catch((e) => {
-        console.log(e.message);
-      });
-  }, [url, id]);
+  // useEffect(() => {
+  //   fetch(url + id, {
+  //     method: "get",
+  //     data: {},
+  //     headers: {
+  //       "access-token": "5353353-5353-535353",
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw Error("Can not connect to the server!.");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setProduct(data);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e.message);
+  //     });
+  // }, [url, id]);
+
 
   return (
     // <div className="box" key={product.id}>

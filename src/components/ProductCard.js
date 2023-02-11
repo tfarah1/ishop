@@ -17,11 +17,11 @@ const ProductCard = ({ product }) => {
     <div className="card-box" key={product.id}>
       <div className="card-top">
         <FiTag className="card-tag" />
-        <span className="card-category">{product.category.toUpperCase()}</span>
+        <span className="card-category">{product.category?.toUpperCase()}</span>
       </div>
 
       <div>
-        <p className="card-title">{product.title.substring(0, 42)}...</p>
+        <p className="card-title">{product.title?.substring(0, 42)}...</p>
       </div>
 
       <div className="card-img-container">
@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
 
       <div className="card-bottom">
         <span className="card-price">
-          <strong>${product.price}</strong>
+          <strong>${product?.price}</strong>
         </span>
         <BsFillCartPlusFill
           className="card-cart"

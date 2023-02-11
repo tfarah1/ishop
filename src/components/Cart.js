@@ -64,7 +64,14 @@ const Cart = () => {
           <Col>Units</Col>
           <Col></Col>
           <Col></Col>
-          <Col><button className="btn btn-outline-danger" onClick={handleDeleteAll}>Delete all</button></Col>
+          <Col>
+            <button
+              className="btn btn-outline-danger"
+              onClick={handleDeleteAll}
+            >
+              Delete all
+            </button>
+          </Col>
         </Row>
         {productsInCart.map((product) => {
           return (
@@ -83,9 +90,9 @@ const Cart = () => {
                 <BsPlusCircleFill
                   className="cart-delete"
                   style={{ cursor: "pointer" }}
-                  onClick={() => handleAddProduct(product.id)}
+                  onClick={() => handleAddProduct(product)}
                 ></BsPlusCircleFill>
-              </Col> 
+              </Col>
               <Col>
                 <HiMinusCircle
                   className="cart-delete"
@@ -103,7 +110,7 @@ const Cart = () => {
       <div className="cart-total-price">
         <label>Total price to pay:</label>
         <br />
-        <span>${totalPrice}</span>
+        <span>${Math.round(totalPrice * 100) / 100}</span>
       </div>
 
       <br />
