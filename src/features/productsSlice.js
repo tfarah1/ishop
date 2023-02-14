@@ -67,8 +67,7 @@ export const productsSlice = createSlice({
       }
       state.totalPrice = calculateTotal(state.cart);
 
-      //write
-      //product.id
+      //write products to carts
       const db = getDatabase();
       const Productref = ref(db, "Cart/");
       const data = action.payload;
