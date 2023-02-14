@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 // import { getDatabase, ref, onValue } from "firebase/database";
 
 const ProductDetails = () => {
+  const [datas,setDatas] = useState([]);
   const { id } = useParams();
   // firebase
   // const db = getDatabase();
