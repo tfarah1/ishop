@@ -15,23 +15,18 @@ const ProductDetails = () => {
   const db = getDatabase();
   const Productref = ref(db, "products/" + id);
 
-  useEffect(()=>{
+  useEffect(() => {
     onValue(Productref, (snapshot) => {
-      const data = (snapshot.val());
+      const data = snapshot.val();
       // dispatch({ type: "products/setProducts", payload: data });
-        setProduct(data)
+      setProduct(data);
     });
-  },[])
- 
-
+  }, []);
 
   const dispatch = useDispatch();
   const handleClick = (product) => {
     dispatch({ type: "products/addToCart", payload: product });
   };
- 
- 
- 
 
   return (
     // <div className="box" key={product.id}>
@@ -46,25 +41,35 @@ const ProductDetails = () => {
     //   ></img>
     // </div>
 
-    <div className="box" key={product.id}>     
-    <div className="row">  
-     <img className="img col-lg-6 col-sm-12"
-       style={{ height: "500px", width: "500px" }}
-       src={product.image}
-       alt="product"></img>
-     <div className="text col-lg-6 col-sm-12">
-     <h1 id="title1">{product.title}</h1>
-     <p id="cat1">Category: {product.category}</p><hr className="line"></hr>
-     <p id="des1">Description: {product.description}</p><hr className="line"></hr>
-     <div id="prod-cart">
-      <p id="pr1">Price: {product.price}$</p>       
-      <BsFillCartPlusFill
-       onClick={() => handleClick(product)}
-       cursor="pointer"/>
-      </div><hr className="line"></hr> 
-     </div>
-   </div>
- </div>
+    <div className="box" key={product.id}>
+      <div className="row" style={{paddingLeft: "100px"}}>
+        <img
+          className="img col-lg-6 col-sm-12"
+          style={{ height: "500px", width: "500px" }}
+          src={product.image}
+          alt="product"
+        ></img>
+        <div className="text col-lg-6 col-sm-40" style={{paddingLeft: "70px"}}>
+          <h1 id="title1">{product.title}</h1>
+          <p id="cat1">
+            <strong>Category:</strong> {product.category}
+          </p>
+          <hr className="line"></hr>
+          <p id="des1">
+            <strong>Description:</strong> {product.description}
+          </p>
+          <hr className="line"></hr>
+          <div id="prod-cart">
+            <p id="pr1">Price: {product.price}$</p>
+            <BsFillCartPlusFill
+              onClick={() => handleClick(product)}
+              cursor="pointer"
+            />
+          </div>
+          <hr className="line"></hr>
+        </div>
+      </div>
+    </div>
   );
 };
 
