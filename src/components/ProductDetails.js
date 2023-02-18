@@ -10,17 +10,19 @@ import { useDispatch } from "react-redux";
 import { getDatabase, ref, onValue } from "firebase/database";
 
 const ProductDetails = () => {
-  const [datas,setDatas] = useState([]);
+  const [product, setProduct] = useState([]);
   const { id } = useParams();
   const db = getDatabase();
-  const Productref = ref(db, "products/" + id) ;
-  onValue(Productref, (snapshot) => {
-    const data = Object.values(snapshot.val());
-    //  console.log(data);
-    // dispatch({ type: "products/setProducts", payload: data });
-      console.log(data)
-      setDatas(data)
-  });
+  const Productref = ref(db, "products/" + id);
+
+  useEffect(()=>{
+    onValue(Productref, (snapshot) => {
+      const data = (snapshot.val());
+      // dispatch({ type: "products/setProducts", payload: data });
+        setProduct(data)
+    });
+  },[])
+ 
 
 
   const dispatch = useDispatch();
@@ -29,31 +31,7 @@ const ProductDetails = () => {
   };
  
  
-  // const url = "https://fakestoreapi.com/products/";
-
-  // useEffect(() => {
-  //   fetch(url + id, {
-  //     method: "get",
-  //     data: {},
-  //     headers: {
-  //       "access-token": "5353353-5353-535353",
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw Error("Can not connect to the server!.");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setProduct(data);
-  //     })
-  //     .catch((e) => {
-  //       console.log(e.message);
-  //     });
-  // }, [url, id]);
-
+ 
 
   return (
     // <div className="box" key={product.id}>
