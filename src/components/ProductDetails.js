@@ -10,22 +10,17 @@ import { useDispatch } from "react-redux";
 import { getDatabase, ref, onValue } from "firebase/database";
 
 const ProductDetails = () => {
-  const [product, setProduct] = useState([]);
   const [datas,setDatas] = useState([]);
   const { id } = useParams();
   const db = getDatabase();
   const Productref = ref(db, "products/" + id) ;
-
-  useEffect(()=>{
-    onValue(Productref, (snapshot) => {
-      const data = (snapshot.val());
-      //  console.log(data);
-      // dispatch({ type: "products/setProducts", payload: data });
-        console.log(data)
-        setProduct(data)
-    });
-  },[])
- 
+  onValue(Productref, (snapshot) => {
+    const data = Object.values(snapshot.val());
+    //  console.log(data);
+    // dispatch({ type: "products/setProducts", payload: data });
+      console.log(data)
+      setDatas(data)
+  });
 
 
   const dispatch = useDispatch();
