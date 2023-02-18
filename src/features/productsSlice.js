@@ -39,12 +39,20 @@ const calculateTotal = (cart) => {
   let initialValue = 0;
   //calculating te Total price by multipling the price by the units
   if (cart.length > 0) {
-    total = cart.reduce((sumCart, currentCartItem) => {
-      sumCart += currentCartItem.price * currentCartItem.productUnits;
-      return sumCart;
-    }, initialValue);
 
-    
+     total  = cart.reduce(
+        
+      (sumCart,currentCartItem)=>{
+        sumCart+=currentCartItem.price*currentCartItem.productUnits;
+        return sumCart;
+        
+         
+        
+      }, initialValue
+     )
+     
+     
+     console.log(total)
 
     // for (let i = 0; i < cart.length; i++) {
     //   total += cart[i].price * cart[i].productUnits;
@@ -53,9 +61,7 @@ const calculateTotal = (cart) => {
     // dispatch({ type: "SET_TOTAL_PRICE", payload: total });
     console.log(typeof total);
   }
-  
-  return total;
-  // dispatch({ type: "SET_TOTAL_PRICE", payload: total });
+  dispatch({ type: "SET_TOTAL_PRICE", payload: total });
 };
 
 const initialState = {

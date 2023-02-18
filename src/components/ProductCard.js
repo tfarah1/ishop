@@ -11,9 +11,8 @@ const ProductCard = ({ product }) => {
     //POST product in CART
     // console.log(product);
     dispatch({ type: "products/addToCart", payload: product });
-    
   };
-  console.log(product)
+  // console.log(product)
   return (
     <div className="card-box" key={product.id}>
       <div className="card-top">

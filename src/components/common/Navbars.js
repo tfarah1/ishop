@@ -5,10 +5,10 @@ import { FaSignInAlt, FaUser } from "react-icons/fa";
 import Search from "./Search";
 import { onAuthStateChanged, signOut } from "@firebase/auth";
 import { auth } from "../Database";
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 const Navbars = () => {
   const productsInCart = useSelector((state) => state.products.cart) || [];
@@ -97,43 +97,66 @@ const Navbars = () => {
     //   </div>
     // </nav>
 
-  <Navbar className='nav' bg="" expand="lg">
-    <Container fluid className='nav1'>
-      <Navbar.Brand id='logo' href="/">iShop</Navbar.Brand>
-      <Navbar.Toggle aria-controls="navbarScroll" />
-      <Navbar.Collapse id="navbarScroll">
-        <Nav className="navigation me my-2 my-lg-0" style={{ maxHeight: '200px' }} navbarScroll>
-          <NavLink className="navlinks" to="/">Home</NavLink>
-          <a className="navlinks" href="#footer">Contacts</a>
-          
-          
-          {user ? (
-            <>
-
-<Form className="search">
-          <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-          </Form>
-          <li className="counter"><NavLink className="nav-links" to="/cart">Cart</NavLink> 
-          <span className="cart-counter">{productsInCart.length}</span>
-          </li>
-          <div
-              onClick={() => {navigate("/");signOut(auth);}}
+    <Navbar className="nav" bg="" expand="lg">
+      <Container fluid className="nav1">
+        <Navbar.Brand id="logo" href="/">
+          iShop
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="navigation me my-2 my-lg-0"
+            style={{ maxHeight: "200px" }}
+            navbarScroll
+          >
+            {user ? (
+              <>
+                <Form className="search">
+                  <Search
+                    setSearchQuery={setSearchQuery}
+                    searchQuery={searchQuery}
+                  />
+                </Form>
+                <li className="counter">
+                  <NavLink className="nav-links" to="/cart">
+                    Cart
+                  </NavLink>
+                  <span className="cart-counter">{productsInCart.length}</span>
+                </li>
+                <div
+                  onClick={() => {
+                    navigate("/");
+                    signOut(auth);
+                  }}
                   className="navlinks"
                   style={{ cursor: "pointer" }}
-                  to="/logout">
-                  Logout <FaSignInAlt className="icon-log"/></div>
-          </>
-          ):(
-          <>
-          <NavLink className="navlinks" to="/Signin"> Login <FaSignInAlt className="icon-log" /></NavLink>
-          <NavLink className="navlinks" to="/Signup"> Register <FaUser className="icon-log" /></NavLink>
-          </>
-          )}
-          
-          </Nav> 
-      </Navbar.Collapse>
-    </Container>
-  </Navbar>
+                  to="/logout"
+                >
+                  Logout <FaSignInAlt className="icon-log" />
+                </div>
+              </>
+            ) : (
+              <>
+                <NavLink className="navlinks" to="/Signin">
+                  {" "}
+                  Login <FaSignInAlt className="icon-log" />
+                </NavLink>
+                <NavLink className="navlinks" to="/Signup">
+                  {" "}
+                  Register <FaUser className="icon-log" />
+                </NavLink>
+              </>
+            )}
+            <NavLink className="navlinks" to="/">
+              Home
+            </NavLink>
+            <a className="navlinks" href="#footer">
+              Contacts
+            </a>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
