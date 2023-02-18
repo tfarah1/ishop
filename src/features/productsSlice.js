@@ -48,7 +48,7 @@ const calculateTotal = (cart) => {
       }, initialValue
      )
      
-
+     
      console.log(total)
 
     // for (let i = 0; i < cart.length; i++) {
@@ -57,6 +57,7 @@ const calculateTotal = (cart) => {
     // return total;
     // dispatch({ type: "SET_TOTAL_PRICE", payload: total });
   }
+  dispatch({ type: "SET_TOTAL_PRICE", payload: total });
 };
 
 const initialState = {
