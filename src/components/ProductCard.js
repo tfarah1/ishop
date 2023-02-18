@@ -11,13 +11,14 @@ const ProductCard = ({ product }) => {
     //POST product in CART
     // console.log(product);
     dispatch({ type: "products/addToCart", payload: product });
+    
   };
-
+  console.log(product)
   return (
     <div className="card-box" key={product.id}>
       <div className="card-top">
         <FiTag className="card-tag" />
-        <span className="card-category">{product.category?.toUpperCase()}</span>
+        <span className="card-category">{product.category.label}</span>
       </div>
 
       <div>

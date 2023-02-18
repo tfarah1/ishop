@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDatabase, ref, onValue, set, push } from "firebase/database";
+import { getDatabase, ref, onValue, set, push } from "firebase/database"
+import { useEffect } from "react";
+import {  useSelector } from "react-redux";
+
 export const getProducts = () => (dispatch) => {
   const db = getDatabase();
   const Productref = ref(db, "products");
@@ -8,6 +11,7 @@ export const getProducts = () => (dispatch) => {
     console.log(data);
     dispatch({ type: "products/setProducts", payload: data });
     console.log(data);
+    
   });
 
   // db.ref('https://laser-c7594-default-rtdb.firebaseio.com/products')
@@ -26,13 +30,37 @@ export const getProducts = () => (dispatch) => {
 };
 
 const calculateTotal = (cart) => {
+  
   // console.log("calcu total");
   let total = 0;
+  let initialValue = 0
+  //calculating te Total price by multipling the price by the units
   if (cart.length > 0) {
-    for (let i = 0; i < cart.length; i++) {
-      total += cart[i].price * cart[i].productUnits;
-    }
-    return total;
+
+     total  = cart.reduce(
+        
+      (sumCart,currentCartItem)=>{
+        
+        if(cart.id==currentCartItem.id){
+         sumCart += currentCartItem.price * currentCartItem.productUnits;
+         return sumCart
+        }else{
+          sumCart = 0
+          sumCart = currentCartItem.price * currentCartItem.productUnits;
+          return sumCart
+        }
+         
+        
+      }
+     )
+     
+
+     console.log(total)
+
+    // for (let i = 0; i < cart.length; i++) {
+    //   total += cart[i].price * cart[i].productUnits;
+    // }
+    // return total;
     // dispatch({ type: "SET_TOTAL_PRICE", payload: total });
   }
 };
