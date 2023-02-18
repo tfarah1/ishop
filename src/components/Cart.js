@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const productsInCart = useSelector((state) => state.products.cart) || [];
   const totalPrice = useSelector((state) => state.products.totalPrice);
+  console.log(totalPrice)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -62,8 +63,8 @@ const Cart = () => {
           <Col>Image</Col>
           <Col>price</Col>
           <Col>Units</Col>
-          {/* <Col></Col>
-          <Col></Col> */}
+          <Col>Add</Col>
+          <Col>Delete</Col>
           <Col>
             <button
               className="btn btn-outline-danger"
