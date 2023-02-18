@@ -45,24 +45,15 @@ function Checkout() {
       productsInCart: productsInCart,
       totalPrice: totalPrice,
     };
-    // userData.push(
-    //   firstName,
-    //   lastName,
-    //   address,
-    //   zip,
-    //   date,
-    //   { productsInCart },
-    //   totalPrice
-    // );
-    //write
-    //product.id
+
+    //write to db
+    writeUserData(userData);
 
     dispatch({ type: "products/delAllFromCart" });
-    writeUserData(userData);
     alert("Your order is on its way...");
     setTimeout(() => {
       navigate("/");
-    }, 2000);
+    }, 1500);
     console.log(userData);
   };
 

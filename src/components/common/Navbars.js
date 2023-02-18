@@ -124,7 +124,7 @@ const Navbars = () => {
                   Home
                 </NavLink>
                 <a className="navlinks" href="#footer">
-                  Contacts
+                  Contact us
                 </a>
                 <li className="counter">
                   <NavLink className="nav-links" to="/cart">
