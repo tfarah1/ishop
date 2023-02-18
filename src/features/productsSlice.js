@@ -40,18 +40,12 @@ const calculateTotal = (cart) => {
      total  = cart.reduce(
         
       (sumCart,currentCartItem)=>{
+        sumCart+=currentCartItem.price*currentCartItem.productUnits;
+        return sumCart;
         
-        if(cart.id==currentCartItem.id){
-         sumCart += currentCartItem.price * currentCartItem.productUnits;
-         return sumCart
-        }else{
-          sumCart = 0
-          sumCart = currentCartItem.price * currentCartItem.productUnits;
-          return sumCart
-        }
          
         
-      }
+      }, initialValue
      )
      
 

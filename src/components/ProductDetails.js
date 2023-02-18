@@ -10,17 +10,22 @@ import { useDispatch } from "react-redux";
 import { getDatabase, ref, onValue } from "firebase/database";
 
 const ProductDetails = () => {
+  const [product, setProduct] = useState([]);
   const [datas,setDatas] = useState([]);
   const { id } = useParams();
   const db = getDatabase();
   const Productref = ref(db, "products/" + id) ;
-  onValue(Productref, (snapshot) => {
-    const data = Object.values(snapshot.val());
-    //  console.log(data);
-    // dispatch({ type: "products/setProducts", payload: data });
-      console.log(data)
-      setDatas(data)
-  });
+
+  useEffect(()=>{
+    onValue(Productref, (snapshot) => {
+      const data = (snapshot.val());
+      //  console.log(data);
+      // dispatch({ type: "products/setProducts", payload: data });
+        console.log(data)
+        setProduct(data)
+    });
+  },[])
+ 
 
 
   const dispatch = useDispatch();
@@ -28,7 +33,7 @@ const ProductDetails = () => {
     dispatch({ type: "products/addToCart", payload: product });
   };
  
-  const [product, setProduct] = useState([]);
+ 
   // const url = "https://fakestoreapi.com/products/";
 
   // useEffect(() => {
