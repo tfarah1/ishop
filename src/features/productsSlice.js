@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDatabase, ref, onValue, set, push } from "firebase/database"
+import { getDatabase, ref, onValue, set, push } from "firebase/database";
 import { useEffect } from "react";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export const getProducts = () => (dispatch) => {
   const db = getDatabase();
@@ -11,7 +11,6 @@ export const getProducts = () => (dispatch) => {
     console.log(data);
     dispatch({ type: "products/setProducts", payload: data });
     console.log(data);
-    
   });
 
   // db.ref('https://laser-c7594-default-rtdb.firebaseio.com/products')
@@ -30,26 +29,17 @@ export const getProducts = () => (dispatch) => {
 };
 
 const calculateTotal = (cart) => {
-  
   // console.log("calcu total");
   let total = 0;
-  let initialValue = 0
+  let initialValue = 0;
   //calculating te Total price by multipling the price by the units
   if (cart.length > 0) {
+    total = cart.reduce((sumCart, currentCartItem) => {
+      sumCart += currentCartItem.price * currentCartItem.productUnits;
+      return sumCart;
+    }, initialValue);
 
-     total  = cart.reduce(
-        
-      (sumCart,currentCartItem)=>{
-        sumCart+=currentCartItem.price*currentCartItem.productUnits;
-        return sumCart;
-        
-         
-        
-      }, initialValue
-     )
-     
-     
-     console.log(total)
+    console.log(total);
 
     // for (let i = 0; i < cart.length; i++) {
     //   total += cart[i].price * cart[i].productUnits;
@@ -57,7 +47,8 @@ const calculateTotal = (cart) => {
     // return total;
     // dispatch({ type: "SET_TOTAL_PRICE", payload: total });
   }
-  dispatch({ type: "SET_TOTAL_PRICE", payload: total });
+  return total;
+  // dispatch({ type: "SET_TOTAL_PRICE", payload: total });
 };
 
 const initialState = {
@@ -117,7 +108,7 @@ export const productsSlice = createSlice({
     addAnotherToCart: (state, action) => {
       let index = state.cart.findIndex((p) => p.id === action.payload.id);
       // check count in database
-      // units >= 
+      // units >=
       if (index > -1) {
         state.cart[index].productUnits++;
         state.totalPrice = calculateTotal(state.cart);

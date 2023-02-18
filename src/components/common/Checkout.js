@@ -1,3 +1,4 @@
+import { getDatabase, push, ref } from "@firebase/database";
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +27,15 @@ function Checkout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const db = getDatabase();
+  const Productref = ref(db, "order/");
+
+  function writeUserData(userData) {
+    push(Productref, {
+      data: userData,
+    });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     userData = {
@@ -46,7 +56,11 @@ function Checkout() {
     //   { productsInCart },
     //   totalPrice
     // );
+    //write
+    //product.id
+
     dispatch({ type: "products/delAllFromCart" });
+    writeUserData(userData);
     alert("Your order is on its way...");
     setTimeout(() => {
       navigate("/");
