@@ -103,20 +103,29 @@ const Navbars = () => {
           iShop
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Collapse
+          id="navbarScroll"
+          style={{ justifyContent: "flex-end" }}
+        >
           <Nav
             className="navigation me my-2 my-lg-0"
-            style={{ maxHeight: "200px" }}
+            style={{ maxHeight: "200px", justifyContent: "flex-end" }}
             navbarScroll
           >
             {user ? (
               <>
-                <Form className="search">
+                <Form className="search" style={{ width: "550px" }}>
                   <Search
                     setSearchQuery={setSearchQuery}
                     searchQuery={searchQuery}
                   />
                 </Form>
+                <NavLink className="navlinks" to="/">
+                  Home
+                </NavLink>
+                <a className="navlinks" href="#footer">
+                  Contacts
+                </a>
                 <li className="counter">
                   <NavLink className="nav-links" to="/cart">
                     Cart
@@ -138,21 +147,13 @@ const Navbars = () => {
             ) : (
               <>
                 <NavLink className="navlinks" to="/Signin">
-                  {" "}
                   Login <FaSignInAlt className="icon-log" />
                 </NavLink>
                 <NavLink className="navlinks" to="/Signup">
-                  {" "}
                   Register <FaUser className="icon-log" />
                 </NavLink>
               </>
             )}
-            <NavLink className="navlinks" to="/">
-              Home
-            </NavLink>
-            <a className="navlinks" href="#footer">
-              Contacts
-            </a>
           </Nav>
         </Navbar.Collapse>
       </Container>

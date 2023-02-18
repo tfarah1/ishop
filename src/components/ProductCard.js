@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
     <div className="card-box" key={product.id}>
       <div className="card-top">
         <FiTag className="card-tag" />
-        <span className="card-category">{product.category.label}</span>
+        <span className="card-category">{product.category?.toUpperCase()}</span>
       </div>
 
       <div>

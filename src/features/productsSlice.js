@@ -8,30 +8,22 @@ export const getProducts = () => (dispatch) => {
   const Productref = ref(db, "products");
   onValue(Productref, (snapshot) => {
     const data = Object.values(snapshot.val());
-    console.log(data);
+    // console.log(data);
     dispatch({ type: "products/setProducts", payload: data });
-    console.log(data);
+    // console.log(data);
   });
-
-
 };
 
-
-const checkingAvabilitly = ()=>{
-  const db = getDatabase();
-  const Productref = ref(db, "ca");
-  onValue(Productref, (snapshot) => {
-    const data = Object.values(snapshot.val());
-    console.log(data);
-    dispatch({ type: "products/setProducts", payload: data });
-    console.log(data);
-  });
-}
-
-
-
-
-
+// const checkingAvabilitly = ()=>{
+//   const db = getDatabase();
+//   const Productref = ref(db, "ca");
+//   onValue(Productref, (snapshot) => {
+//     const data = Object.values(snapshot.val());
+//     console.log(data);
+//     dispatch({ type: "products/setProducts", payload: data });
+//     console.log(data);
+//   });
+// }
 
 const calculateTotal = (cart) => {
   // console.log("calcu total");
@@ -39,29 +31,22 @@ const calculateTotal = (cart) => {
   let initialValue = 0;
   //calculating te Total price by multipling the price by the units
   if (cart.length > 0) {
+    total = cart.reduce((sumCart, currentCartItem) => {
+      sumCart += currentCartItem.price * currentCartItem.productUnits;
+      return sumCart;
+    }, initialValue);
 
-     total  = cart.reduce(
-        
-      (sumCart,currentCartItem)=>{
-        sumCart+=currentCartItem.price*currentCartItem.productUnits;
-        return sumCart;
-        
-         
-        
-      }, initialValue
-     )
-     
-     
-     console.log(total)
+    console.log(total);
 
     // for (let i = 0; i < cart.length; i++) {
     //   total += cart[i].price * cart[i].productUnits;
     // }
     // return total;
     // dispatch({ type: "SET_TOTAL_PRICE", payload: total });
-    console.log(typeof total);
+    // console.log(typeof total);
   }
-  dispatch({ type: "SET_TOTAL_PRICE", payload: total });
+  return total;
+  // dispatch({ type: "SET_TOTAL_PRICE", payload: total });
 };
 
 const initialState = {

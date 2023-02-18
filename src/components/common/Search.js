@@ -6,7 +6,7 @@ const Search = () => {
 
   return (
     <div>
-      <input className="search-box"
+      <input className="search-box" style={{width: "500px"}}
         placeholder="Search..."
         onChange={(event) =>
           dispatch({

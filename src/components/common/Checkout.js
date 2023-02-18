@@ -31,9 +31,7 @@ function Checkout() {
   const Productref = ref(db, "order/");
 
   function writeUserData(userData) {
-    push(Productref, {
-      data: userData,
-    });
+    push(Productref, userData);
   }
 
   const handleSubmit = (e) => {
