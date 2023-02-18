@@ -62,8 +62,8 @@ const Cart = () => {
           <Col>Image</Col>
           <Col>price</Col>
           <Col>Units</Col>
-          <Col></Col>
-          <Col></Col>
+          {/* <Col></Col>
+          <Col></Col> */}
           <Col>
             <button
               className="btn btn-outline-danger"
