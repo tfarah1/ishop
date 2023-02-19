@@ -5,8 +5,8 @@ const Search = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <input className="search-box" style={{width: "500px"}}
+    <div className="search-div">
+      <input className="search-box"
         placeholder="Search..."
         onChange={(event) =>
           dispatch({

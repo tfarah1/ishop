@@ -58,14 +58,16 @@ function Checkout() {
   };
 
   return (
+    <div className="check-form">
     <form
-      className="main"
+      
       onSubmit={(e) => {
         handleSubmit(e);
       }}
     >
-      <label>First Name:</label>
-      <br />
+      <h2 className="check-header">Checkout</h2> 
+      
+      <div className="input-container">
       <input
         required
         name="firstName"
@@ -73,10 +75,11 @@ function Checkout() {
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
       />
+      <label>First Name</label>
+      </div>
 
-      <br />
-      <label>Last Name:</label>
-      <br />
+      <div className="input-container">
+      
       <input
         required
         name="lastName"
@@ -84,10 +87,9 @@ function Checkout() {
         value={lastName}
         onChange={(e) => setLastName(e.target.value)}
       />
-
-      <br />
-      <label>Full Address:</label>
-      <br />
+      <label>Last Name</label>
+      </div>
+      <div className="input-container">
       <input
         required
         name="address"
@@ -95,10 +97,10 @@ function Checkout() {
         value={address}
         onChange={(e) => setAddress(e.target.value)}
       />
+      <label>Full Address</label>
+      </div>
 
-      <br />
-      <label>Zip</label>
-      <br />
+      <div className="input-container">
       <input
         required
         name="zip"
@@ -106,10 +108,10 @@ function Checkout() {
         value={zip}
         onChange={(e) => setZip(e.target.value)}
       />
-      <br />
-
-      <label>Date:</label>
-      <br />
+      <label>Zip</label>
+      </div>
+      
+      <div className="input-container">
       <input
         required
         name="date"
@@ -117,12 +119,13 @@ function Checkout() {
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
-      <br />
-      <br />
+      <label>Date</label>
+      </div>
+      <div className="button-container">
       <button type="submit" value="checkout" className="btn btn-dark btn-block">
         Checkout
-      </button>
-    </form>
+      </button></div>
+    </form></div>
   );
 }
 

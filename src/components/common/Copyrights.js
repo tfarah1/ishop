@@ -10,9 +10,9 @@ const Copyrights = () => {
   return (
     <footer id="footer">
       <div className="footer-icons">
-        <i className="iconss" aria-hidden="true">
+        <i className="iconss">
           {" "}
-          <a
+          <a id="foot-ic"
             href="https://www.instagram.com/shawazone"
             target="_blank"
             rel="noreferrer"
@@ -20,25 +20,29 @@ const Copyrights = () => {
             <FaInstagram />
           </a>
         </i>
-        <i className="iconss" aria-hidden="true">
+        <i className="iconss" >
           {" "}
-          <a
-            href="https://www.twitter.com/covpain"
+          <a id="foot-ic"
+            href="https://twitter.com/CovPain"
             target="_blank"
             rel="noreferrer"
           >
             <FaTwitter />
           </a>
         </i>
-        <i className="iconss" aria-hidden="true">
+        <i className="iconss">
           {" "}
-          <a href="https://wa.me/+96171928182" target="_blank" rel="noreferrer">
+          <a id="foot-ic"
+             href="https://wa.me/+96171928182" 
+             target="_blank" 
+             rel="noreferrer"
+          >
             <FaWhatsapp />
           </a>
         </i>
-        <i className="iconss" aria-hidden="true">
+        <i className="iconss">
           {" "}
-          <a
+          <a id="foot-ic"
             href="https://www.linkedin.com/in/farahtaleb"
             target="_blank"
             rel="noreferrer"
