@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const productsInCart = useSelector((state) => state.products.cart) || [];
   const totalPrice = useSelector((state) => state.products.totalPrice);
-  console.log(totalPrice)
+  console.log(totalPrice);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -74,19 +74,19 @@ const Cart = () => {
             </button>
           </Col>
         </Row>
-        {productsInCart.map((product) => {
+        {productsInCart?.map((product) => {
           return (
-            <Row key={product.id}>
-              <Col>{product.title}</Col>
+            <Row key={product?.id}>
+              <Col>{product?.title}</Col>
               <Col>
                 <img
                   className="cart-image"
-                  src={product.image}
-                  alt={product.category}
+                  src={product?.image}
+                  alt={product?.category}
                 />
               </Col>
-              <Col>{product.price}$</Col>
-              <Col>{product.productUnits}</Col>
+              <Col>{product?.price}$</Col>
+              <Col>{product?.productUnits}</Col>
               <Col>
                 <BsPlusCircleFill
                   className="cart-delete"
