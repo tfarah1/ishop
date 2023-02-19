@@ -203,12 +203,14 @@ const Navbars = () => {
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav className="navigation" style={{ maxHeight: '250px' }} navbarScroll>
-          <a className="navlinks" href="#footer">Contacts</a>          
+                  
           {user ? (
             <>
+        
           <Form className="search">
           <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
           </Form>
+          <a className="navlinks" href="#footer">Contact</a>  
           <li className="counter"><NavLink className="nav-links" to="/cart">Cart</NavLink> 
           <span className="cart-counter">{productsInCart.length}</span>
           </li>
@@ -217,6 +219,7 @@ const Navbars = () => {
                   className="navlinks"
                   style={{ cursor: "pointer" }}
                   to="/logout"> Signout <FaSignInAlt className="icon-log"/></div>
+                  
           </>
           ):(
           <>
