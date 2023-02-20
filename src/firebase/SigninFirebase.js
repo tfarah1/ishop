@@ -1,7 +1,7 @@
 import {
   getAuth,
   signInWithEmailAndPassword ,
-  onAuthStateChanged,
+  // onAuthStateChanged,
 } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyCeOCIDsAuDDcy1o9zaak09wO4ZWyN_vpM",
@@ -14,7 +14,7 @@ const firebaseConfig = {
   measurementId: "G-3994H3J7M8",
 };
 const auth = getAuth();
-const user = auth.currentUser;
+// const user = auth.currentUser;
 export const signIn = (email, password) => {
 
    return signInWithEmailAndPassword(auth, email, password)

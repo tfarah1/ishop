@@ -43,15 +43,26 @@ const ProductDetails = () => {
           </p>
           <hr className="line"></hr>
           <p id="des1">
-            <strong>Description:</strong> <i>{product?.description}</i>
+            <i>
+              <strong>Description: </strong>
+              {product?.description}
+            </i>
           </p>
           <hr className="line"></hr>
           <div id="prod-cart">
             <p id="pr1">Price: {product?.price}$</p>
-            <BsFillCartPlusFill
+            <button
+              className="btn"
               onClick={() => handleClick(product)}
               cursor="pointer"
-            />
+              style={{
+                backgroundColor: "blueviolet",
+                color: "white",
+                width: "200px",
+              }}
+            >
+              add to cart
+            </button>
           </div>
           <hr className="line"></hr>
         </div>

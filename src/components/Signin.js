@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signIn } from "./SigninFirebase";
+import { signIn } from "../firebase/SigninFirebase";
 
 function Login() {
   const [username, setUsername] = useState("");

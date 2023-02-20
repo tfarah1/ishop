@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { db } from "./Database";
-import { newUser } from "./SignupFirebase";
+import { newUser } from "../firebase/SignupFirebase";
 import { ref, set } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 

@@ -298,6 +298,7 @@ Link {
 
 .img {
   border: solid rgb(0, 0, 0);
+  /* border: solid rgb(116, 50, 179); */
   border-radius: 20px;
   padding: 20px;
   margin-left: 20px;

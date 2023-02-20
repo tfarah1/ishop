@@ -11,7 +11,7 @@ function Checkout() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
-  const [zip, setZip] = useState(0);
+  const [zip, setZip] = useState("");
 
   // get date
   const dateObj = new Date();
