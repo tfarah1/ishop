@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const productsInCart = useSelector((state) => state.products.cart) || [];
   const totalPrice = useSelector((state) => state.products.totalPrice);
-  console.log(totalPrice);
+  // console.log(totalPrice);
   const dispatch = useDispatch();
 
   useEffect(() => {

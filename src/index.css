@@ -197,7 +197,19 @@ Link {
   padding: 20px;
   border: 0.5px solid #ede7e7;
   border-radius: 10px;
+  /* transition: all 0.2s ease-in-out; */
+  
 }
+
+/* .card-box:hover{
+  width: 500px;
+  height:500px;
+  /* transform: translateY(-10px);
+  transition: transform 0.3s ease-in-out; */
+  /* transition: all 0.2s ease-in-out; }*/
+
+
+
 
 .card-top {
   height: 30px;
@@ -233,7 +245,21 @@ Link {
   height: 200px;
   width: 200px;
   margin-top: 10px;
+  transition: all 0.4s ease-in-out;
 }
+
+.card-image:hover{
+  width: 300px;
+  height:300px;
+
+  /* width: 310px;
+  height: 250px; */
+  /* transform: translateY(-10px);
+  transition: transform 0.3s ease-in-out; */
+}
+
+
+
 
 .card-bottom {
   display: flex;
@@ -288,6 +314,7 @@ Link {
 
 .btn {
   width: 100px;
+  height: 40px;
 }
 
 /* PRODUCT PAGE */

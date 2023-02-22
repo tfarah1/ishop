@@ -37,13 +37,12 @@ function Checkout() {
   const handleSubmit = (e) => {
     e.preventDefault();
     userData = {
-      firstName: firstName,
-      lastName: lastName,
-      address: address,
-      zip: zip,
-      date: date,
-      productsInCart: productsInCart,
-      totalPrice: totalPrice,
+      "Full Name": firstName + " " + lastName,
+      "Full Address": address,
+      "Zip Code": zip,
+      "Order Date": date,
+      "Total Price": totalPrice,
+      Order: productsInCart,
     };
 
     //write to db
@@ -59,73 +58,77 @@ function Checkout() {
 
   return (
     <div className="check-form">
-    <form
-      
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-    >
-      <h2 className="check-header">Checkout</h2> 
-      
-      <div className="input-container">
-      <input
-        required
-        name="firstName"
-        type="text"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
-      <label>First Name</label>
-      </div>
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
+        <h2 className="check-header">Checkout</h2>
 
-      <div className="input-container">
-      
-      <input
-        required
-        name="lastName"
-        type="text"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-      />
-      <label>Last Name</label>
-      </div>
-      <div className="input-container">
-      <input
-        required
-        name="address"
-        type="text"
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
-      />
-      <label>Full Address</label>
-      </div>
+        <div className="input-container">
+          <input
+            required
+            name="firstName"
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <label>First Name</label>
+        </div>
 
-      <div className="input-container">
-      <input
-        required
-        name="zip"
-        type="number"
-        value={zip}
-        onChange={(e) => setZip(e.target.value)}
-      />
-      <label>Zip</label>
-      </div>
-      
-      <div className="input-container">
-      <input
-        required
-        name="date"
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-      />
-      <label>Date</label>
-      </div>
-      <div className="button-container">
-      <button type="submit" value="checkout" className="btn btn-dark btn-block">
-        Checkout
-      </button></div>
-    </form></div>
+        <div className="input-container">
+          <input
+            required
+            name="lastName"
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          <label>Last Name</label>
+        </div>
+        <div className="input-container">
+          <input
+            required
+            name="address"
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+          <label>Full Address</label>
+        </div>
+
+        <div className="input-container">
+          <input
+            required
+            name="zip"
+            type="number"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+          />
+          <label>Zip</label>
+        </div>
+
+        <div className="input-container">
+          <input
+            required
+            name="date"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <label>Date</label>
+        </div>
+        <div className="button-container">
+          <button
+            type="submit"
+            value="checkout"
+            className="btn btn-dark btn-block"
+          >
+            Checkout
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

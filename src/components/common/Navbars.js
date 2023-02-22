@@ -167,6 +167,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaSignInAlt, FaUser } from "react-icons/fa";
+import { BiSearchAlt } from "react-icons/bi";
 import Search from "./Search";
 import { onAuthStateChanged, signOut } from "@firebase/auth";
 import { auth } from "../Database";
@@ -196,10 +197,14 @@ const Navbars = () => {
       setUser(user);
     });
   }, []);
+
+  const handleNavigation = () => {
+    navigate("/")
+  }
   return (    
   <Navbar className='nav' bg="" expand="lg">
     <Container fluid className='nav1'>
-      <Navbar.Brand id='logo' href="/">iShop</Navbar.Brand>
+      <Navbar.Brand id='logo' onClick={handleNavigation}>iShop</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav className="navigation" style={{ maxHeight: '250px' }} navbarScroll>
@@ -208,6 +213,7 @@ const Navbars = () => {
             <>
         
           <Form className="search">
+             {/* <BiSearchAlt/> */}
           <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
           </Form>
           <a className="navlinks" href="#footer">Contact</a>  
