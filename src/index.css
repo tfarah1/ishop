@@ -245,7 +245,7 @@ Link {
   height: 200px;
   width: 200px;
   margin-top: 10px;
-  transition: all 0.6s ease-in-out;
+  transition: all 1.2s ease-in-out;
 }
 
 .card-image:hover {
@@ -275,18 +275,32 @@ Link {
   justify-content: center;
 }
 
+.card-units {
+  display: flex;
+  align-items: center;
+  /* background-color: rgb(204, 184, 228); */
+  background-color: yellowgreen;
+  
+  
+  margin-top: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+
 .card-cart {
   /* color: blueviolet; */
   color: rgb(141, 71, 226);
   height: 35px;
   width: 35px;
-  transition: all 0.5s ease-in-out;
+  /* transition: all 0.5s ease-in-out; */
+  cursor: pointer;
 }
 
-.card-cart:hover {
+/* .card-cart:hover {
   height: 45px;
   width: 45px;
-}
+} */
 
 .main {
   margin: 25px 50px;
@@ -317,6 +331,18 @@ Link {
 .btn {
   width: 100px;
   height: 40px;
+  cursor: pointer;
+  color: white;
+  /* color: blueviolet; */
+  /* border-radius: 20px; */
+  /* background-color: rgb(204, 184, 228); */
+  
+}
+
+.btns{
+  background-color: "blueviolet";
+  color: "white";
+  width: "640px";
 }
 
 .btn:hover {

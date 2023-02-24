@@ -115,8 +115,16 @@ const Cart = () => {
       </div>
 
       <br />
-      <Link to="checkout" className="btn btn-dark">
-        Buy Now
+      <Link
+        to="checkout"
+        className="btn btns"
+        style={{
+          backgroundColor: "blueviolet",
+          color: "white",
+          width: "1000px",
+        }}
+      >
+        Proceed to checkout
       </Link>
     </div>
   ) : (

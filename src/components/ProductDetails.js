@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { BsFillCartPlusFill } from "react-icons/bs";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getDatabase, ref, onValue } from "firebase/database";
 
@@ -19,7 +18,7 @@ const ProductDetails = () => {
   }, []);
 
   const dispatch = useDispatch();
-  const handleClick = (product) => {
+  const handleAddToCart = (product) => {
     dispatch({ type: "products/addToCart", payload: product });
   };
 
@@ -53,7 +52,7 @@ const ProductDetails = () => {
             <p id="pr1">Price: {product?.price}$</p>
             <button
               className="btn"
-              onClick={() => handleClick(product)}
+              onClick={() => handleAddToCart(product)}
               cursor="pointer"
               style={{
                 backgroundColor: "blueviolet",
@@ -61,10 +60,22 @@ const ProductDetails = () => {
                 width: "200px",
               }}
             >
-              add to cart
+              Add to cart
             </button>
           </div>
           <hr className="line"></hr>
+          <Link
+            to="/cart"
+            className="btn"
+            style={{
+              backgroundColor: "blueviolet",
+              color: "white",
+              width: "640px",
+            }}
+            onClick={() => handleAddToCart(product)}
+          >
+            Buy now 
+          </Link>
         </div>
       </div>
     </div>
