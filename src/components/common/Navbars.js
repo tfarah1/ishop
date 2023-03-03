@@ -204,7 +204,7 @@ const Navbars = () => {
   return (    
   <Navbar className='nav' bg="" expand="lg">
     <Container fluid className='nav1'>
-      <Navbar.Brand id='logo' onClick={handleNavigation}>iShop</Navbar.Brand>
+      <Navbar.Brand id='logo' onClick={handleNavigation}>Luminosa</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav className="navigation" style={{ maxHeight: '250px' }} navbarScroll>

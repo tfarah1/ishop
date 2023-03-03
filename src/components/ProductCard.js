@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
   // console.log(product)
 
   return (
-    <div className="card-box" key={product.id}>
+    <div className="card-box" key={product.id} >
       <div className="card-top">
         <FiTag className="card-tag" />
         <span className="card-category">{product.category?.toUpperCase()}</span>
@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
         <p className="card-title">{product.title?.substring(0, 42)}...</p>
       </div>
       {showUnits && units >= 1 ? (
-        <span className="card-units">{units} X</span>
+        <span className="card-units">{units}x</span>
       ) : (
         <></>
       )}

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../features/productsSlice";
 import SkeletonCustomized from "./common/SkeletonCustomized";
 import Filter from "./common/Filter";
+import Header from "./common/Header";
 
 const Products = () => {
   const products = useSelector((state) => state.products.products);
@@ -48,8 +49,10 @@ const Products = () => {
     category === "electronics" ? "btn btn-dark" : "btn btn-outline-dark";
 
   return (
-    <div className="main">
-      <div className="buttons">
+    <div  className="head">
+    <Header/>
+    <div className="main" >
+      <div className="buttons" id="products">  
         <button
           className={btnDecorator}
           onClick={() => {
@@ -93,6 +96,8 @@ const Products = () => {
       </div>
       {products.length > 0 ? showProducts() : showSkeleton()}
     </div>
+    </div>
+
   );
 };
 

@@ -8,6 +8,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const db = getDatabase();
   const Productref = ref(db, "products/" + id);
+  // let name = ''
 
   useEffect(() => {
     onValue(Productref, (snapshot) => {
@@ -64,6 +65,7 @@ const ProductDetails = () => {
             </button>
           </div>
           <hr className="line"></hr>
+          { product ?
           <Link
             to="/cart"
             className="btn"
@@ -76,6 +78,8 @@ const ProductDetails = () => {
           >
             Buy now 
           </Link>
+          : ""
+          }
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import {
 
 const Copyrights = () => {
   return (
-    <footer id="footer">
+    <footer id="footer" style={{paddingTop:"100px", paddingBottom:"100px"}}>
       <div className="footer-icons">
         <i className="iconss">
           {" "}

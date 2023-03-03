@@ -14,6 +14,27 @@ const firebaseConfig = {
   appId: "1:1098383648381:web:35e8ca897c0f02e4a1b314",
   measurementId: "G-3994H3J7M8",
 };
+
+// // Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// // TODO: Add SDKs for Firebase products that you want to use
+// // https://firebase.google.com/docs/web/setup#available-libraries
+
+// // Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBSaCSRnTsZ6fEs74RKx3-8EcS4zMRfNl4",
+//   authDomain: "ishopplb.firebaseapp.com",
+//   projectId: "ishopplb",
+//   storageBucket: "ishopplb.appspot.com",
+//   messagingSenderId: "796190754665",
+//   appId: "1:796190754665:web:2b5af2b7052051b9f7dff8"
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+
+
+
 const auth = getAuth();
 export const newUser = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)

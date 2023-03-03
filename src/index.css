@@ -27,7 +27,8 @@ body {
   justify-content: center;
   font-size: 40px;
   font-weight: 700;
-  color: rgb(0, 0, 0);
+  /* color: rgb(0, 0, 0); */
+  color: #635858;
   transition: 0.3s ease-in-out;
   margin: 0 20px 0 20px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -304,6 +305,11 @@ Link {
 
 .main {
   margin: 25px 50px;
+}
+
+.head{
+  margin: 20px 10px;
+
 }
 
 /* .skeleton-row {
@@ -605,4 +611,111 @@ td {
   text-align: center;
   font-weight: 650;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+
+
+
+/*********************************************************************/
+
+.header {
+  height: 83vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(138,43,226, 0.4),
+      rgba(77, 40, 112, 0.5)
+    ),
+    url("./assets/bass.jpg");
+  background-size: cover;
+  background-position: top;
+  padding: 0;
+  /* clip-path: polygon(0 0, 100% 0, 100% 83vh, 0 100%); */
+  /* clip-path: polygon(0 0, 100% 0, 100% 60vh, 0 100%); */
+
+  /* clip-path: polygon(12% 0%, 100% 0%, 90% 83vh, 0% 83vh); */
+}
+
+
+.text-box {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  /* backface-visibility: hidden; */
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 2.5rem;
+  /* animation-delay: 2s; */
+  /* repeat animation 5 times*/
+  /* animation-iteration-count: 5;  */
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 1rem;
+  font-weight: 650;
+  letter-spacing: 0.46rem;
+  /* animation: moveInRight 3s ease-out; */
+}
+
+
+.btnn:link,
+.btnn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 5rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btnn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0rem 1rem 2rem rgba(0, 0, 0, 0.2);
+  color: #777;
+}
+
+.btnn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btnn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+
+.btnn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btnn-white::after {
+  background-color: #fff;
+}
+
+.btnn:hover::after {
+  transform: scaleX(1.5) scaleY(1.6);
+  opacity: 0;
 }

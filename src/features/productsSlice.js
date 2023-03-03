@@ -8,21 +8,22 @@ export const getProducts = () => (dispatch) => {
   const Productref = ref(db, "products");
   onValue(Productref, (snapshot) => {
     const data = Object.values(snapshot.val());
-    // console.log(data);
+    console.log(data);
     dispatch({ type: "products/setProducts", payload: data });
   });
 };
 
-// const checkingAvabilitly = ()=>{
-//   const db = getDatabase();
-//   const Productref = ref(db, "ca");
-//   onValue(Productref, (snapshot) => {
-//     const data = Object.values(snapshot.val());
-//     console.log(data);
-//     dispatch({ type: "products/setProducts", payload: data });
-//     console.log(data);
-//   });
-// }
+// console.log(products)
+
+const checkingAvabilitly = ()=>{
+  const db = getDatabase();
+  const Productref = ref(db, "cart");
+  onValue(Productref, (snapshot) => {
+    const data = Object.values(snapshot.val());
+    console.log(data);
+    
+  });
+}
 
 const calculateTotal = (cart) => {
   let total = 0;
