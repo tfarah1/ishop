@@ -204,11 +204,14 @@ const Navbars = () => {
   return (    
   <Navbar className='nav' bg="" expand="lg">
     <Container fluid className='nav1'>
+      <NavLink id='logo-div' to="/">
+      <Navbar.Brand id='logo'>iShop</Navbar.Brand></NavLink>
       <Navbar.Brand id='logo' onClick={handleNavigation}>Luminosa</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav className="navigation" style={{ maxHeight: '250px' }} navbarScroll>
                   
+                   
           {user ? (
             <>
         
@@ -217,6 +220,7 @@ const Navbars = () => {
           <Search setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
           </Form>
           <a className="navlinks" href="#footer">Contact</a>  
+          <a className="navlinks" href="#footer">Contact</a> 
           <li className="counter"><NavLink className="nav-links" to="/cart">Cart</NavLink> 
           <span className="cart-counter">{productsInCart.length}</span>
           </li>

@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+// import { Container } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+// import Sale from "./common/Sale";
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 import { useDispatch } from "react-redux";
 import { getDatabase, ref, onValue } from "firebase/database";
 
@@ -63,6 +69,10 @@ const ProductDetails = () => {
             >
               Add to cart
             </button>
+            <p id="pr1">Price: {product.price}$</p>
+          <button className="buy-now" 
+            onClick={() => handleClick(product)}
+            cursor="pointer">Buy Now</button>
           </div>
           <hr className="line"></hr>
           { product ?

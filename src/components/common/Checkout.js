@@ -57,24 +57,26 @@ function Checkout() {
   };
 
   return (
+    
     <div className="check-form">
-      <form
-        onSubmit={(e) => {
-          handleSubmit(e);
-        }}
-      >
-        <h2 className="check-header">Checkout</h2>
-
-        <div className="input-container">
-          <input
-            required
-            name="firstName"
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-          <label>First Name</label>
-        </div>
+    <form
+      className="check-main"
+      onSubmit={(e) => {
+        handleSubmit(e);
+      }}
+    >
+      <h2 className="check-header">Checkout</h2> 
+      
+      <div className="input-container">
+      <input
+        required
+        name="firstName"
+        type="text"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+      />
+      <label>First Name</label>
+      </div>
 
         <div className="input-container">
           <input

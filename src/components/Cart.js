@@ -31,17 +31,6 @@ const Cart = () => {
     dispatch({ type: "products/addAnotherToCart", payload: id });
   };
 
-  // const renderTotalPrice = () => {
-  //   let total = 0;
-  //   if (productsInCart.length > 0) {
-  //     for (let i = 0; i < productsInCart?.length; i++) {
-  //       total += productsInCart[i].price * productsInCart[i].productUnits;
-  //     }
-  //   }
-  //   return total;
-  //   // dispatch({ type: "products/renderTotalPrice" , payload: total});
-  // };
-
   const cartEmptyMessage = () => {
     return (
       <>
@@ -55,7 +44,7 @@ const Cart = () => {
   return productsInCart.length > 0 ? (
     <div className="cart-container">
       <div className="cart-top-container">
-        <HiShoppingCart className="cart-cart" cursor="pointer" />
+        <h1 id="cart-title">Your Cart</h1><HiShoppingCart className="cart-cart" cursor="pointer" />
       </div>
       <Container className="cart-table">
         <Row>
@@ -89,7 +78,7 @@ const Cart = () => {
               <Col>{product?.productUnits}</Col>
               <Col>
                 <BsPlusCircleFill
-                  className="cart-delete"
+                  className="cart-add"
                   style={{ cursor: "pointer" }}
                   onClick={() => handleAddProduct(product)}
                 ></BsPlusCircleFill>
@@ -111,10 +100,11 @@ const Cart = () => {
       <div className="cart-total-price">
         <label>Total price to pay:</label>
         <br />
-        <span>${Math.round(totalPrice * 100) / 100}</span>
+        <span className="total-price">${Math.round(totalPrice * 100) / 100}</span>
       </div>
 
       <br />
+      <div className="buy-button">
       <Link
         to="checkout"
         className="btn btns"
@@ -125,7 +115,7 @@ const Cart = () => {
         }}
       >
         Proceed to checkout
-      </Link>
+      </Link></div>
     </div>
   ) : (
     cartEmptyMessage()
