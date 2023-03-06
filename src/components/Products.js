@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../features/productsSlice";
 import SkeletonCustomized from "./common/SkeletonCustomized";
 import Filter from "./common/Filter";
-import Header from "./common/Header";
 
 const Products = () => {
   const products = useSelector((state) => state.products.products);
@@ -50,7 +49,6 @@ const Products = () => {
 
   return (
     <div  className="head">
-    <Header/>
     <div className="main" >
       <div className="buttons" id="products">  
         <button
