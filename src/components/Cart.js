@@ -109,7 +109,7 @@ const Cart = () => {
         to="checkout"
         className="btn btns"
         style={{
-          backgroundColor: "blueviolet",
+          backgroundColor: "rgba(138,43,226, 0.6)",
           color: "white",
           width: "1000px",
         }}

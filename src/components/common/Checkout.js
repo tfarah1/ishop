@@ -67,7 +67,7 @@ function Checkout() {
     >
       <h2 className="check-header">Checkout</h2> 
       
-      <div className="input-container">
+      <div className="input-containers">
       <input
         required
         name="firstName"
@@ -78,7 +78,7 @@ function Checkout() {
       <label>First Name</label>
       </div>
 
-        <div className="input-container">
+        <div className="input-containers">
           <input
             required
             name="lastName"
@@ -88,7 +88,7 @@ function Checkout() {
           />
           <label>Last Name</label>
         </div>
-        <div className="input-container">
+        <div className="input-containers">
           <input
             required
             name="address"
@@ -99,7 +99,7 @@ function Checkout() {
           <label>Full Address</label>
         </div>
 
-        <div className="input-container">
+        <div className="input-containers">
           <input
             required
             name="zip"
@@ -110,7 +110,7 @@ function Checkout() {
           <label>Zip</label>
         </div>
 
-        <div className="input-container">
+        <div className="input-containers">
           <input
             required
             name="date"
@@ -120,7 +120,7 @@ function Checkout() {
           />
           <label>Date</label>
         </div>
-        <div className="button-container">
+        <div className="button-containers">
           <button
             type="submit"
             value="checkout"
