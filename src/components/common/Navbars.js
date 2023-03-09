@@ -59,7 +59,6 @@ const Navbars = () => {
           </>
           ):(
           <>
-          <NavLink className="navlinks" to="/Signin"> Signin <FaSignInAlt className="icon-log" /></NavLink>
           <NavLink className="navlinks" to="/Signup"> Signup <FaUser className="icon-log" /></NavLink>
           </>
           )}
