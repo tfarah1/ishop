@@ -31,26 +31,12 @@ body {
 #titles{
   height: 18vh;
   margin-bottom: 60px;
-  /* background-image: linear-gradient(
-      to right bottom,
-      rgba(138,43,226, 0.4),
-      rgba(77, 40, 112, 0.5)
-    ),
-    url("./assets/bass.jpg"); */
-
     background-image: linear-gradient(
       to right bottom,
       rgb(125, 72, 174),
       rgba(77, 40, 112, 0.5)
     ),
     url("./assets/bass.jpg");
-
-     /* background-image: linear-gradient(
-      to right bottom,
-      rgba(104, 37, 166, 0.4),
-      rgba(168, 71, 181, 0.5)
-    ),
-    url("./assets/bass.jpg"); */
   background-size: cover;
   background-position: top;
   padding: 0;
@@ -67,7 +53,7 @@ body {
   position: absolute;
   top: 35px;
   left: 15px;
-  display: grid;
+  display: flex;
   align-items: center;
   justify-content: center;
   font-size: 40px;
@@ -75,7 +61,6 @@ body {
   letter-spacing: 6px;
   /* color: #635858; */
   color: #454343;
-
   transition: 0.3s ease-in-out;
   margin: 0 20px 0 20px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -104,7 +89,7 @@ body {
 }
 
 .nav-links {
-  margin: 4px 5px 4px 30px;
+  /* margin: 4px 5px 4px 30px; */
   font-size: 23px;
   font-weight: 500;
   display: flex;
@@ -204,12 +189,6 @@ body {
 
 .cart-empty {
   padding: 300px auto;
-  /* color: rgb(107, 105, 105);
-  font-style: italic;
-  font-size: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center; */
   color: rgb(107, 105, 105);
   font-style: italic;
   font-size: 35px;
@@ -876,7 +855,7 @@ td {
   margin: 0 auto;
 }
 .row:not(:last-child) {
-  margin-bottom: 8rem;
+  margin-bottom: 1rem;
 }
 .row::after {
   content: "";

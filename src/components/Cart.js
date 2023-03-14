@@ -62,7 +62,7 @@ const Cart = () => {
         <h1 id="cart-title">Your Cart</h1><HiShoppingCart className="cart-cart" cursor="pointer" />
       </div>
       <Container className="cart-table">
-        <Row>
+        <Row className="cart-row">
           <Col>Title</Col>
           <Col>Image</Col>
           <Col>price</Col>
@@ -80,7 +80,7 @@ const Cart = () => {
         </Row>
         {productsInCart?.map((product) => {
           return (
-            <Row key={product?.id}>
+            <Row className="cart-row" key={product?.id}>
               <Col>{product?.title}</Col>
               <Col>
                 <img
