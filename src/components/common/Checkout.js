@@ -11,6 +11,7 @@ function Checkout() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
   const [zip, setZip] = useState("");
 
   // get date
@@ -38,6 +39,7 @@ function Checkout() {
     e.preventDefault();
     userData = {
       "Full Name": firstName + " " + lastName,
+      "Phone Number": phone,
       "Full Address": address,
       "Zip Code": zip,
       "Order Date": date,
@@ -57,26 +59,25 @@ function Checkout() {
   };
 
   return (
-    
     <div className="check-form">
-    <form
-      className="check-main"
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-    >
-      <h2 className="check-header">Checkout</h2> 
-      
-      <div className="input-containers">
-      <input
-        required
-        name="firstName"
-        type="text"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
-      <label>First Name</label>
-      </div>
+      <form
+        className="check-main"
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
+        <h2 className="check-header">Checkout</h2>
+
+        <div className="input-containers">
+          <input
+            required
+            name="firstName"
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <label>First Name</label>
+        </div>
 
         <div className="input-containers">
           <input
@@ -88,6 +89,18 @@ function Checkout() {
           />
           <label>Last Name</label>
         </div>
+
+        <div className="input-containers">
+          <input
+            required
+            name="phone"
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <label>Phone Number</label>
+        </div>
+
         <div className="input-containers">
           <input
             required
@@ -107,7 +120,7 @@ function Checkout() {
             value={zip}
             onChange={(e) => setZip(e.target.value)}
           />
-          <label>Zip</label>
+          <label>Zip Code</label>
         </div>
 
         <div className="input-containers">
@@ -120,7 +133,13 @@ function Checkout() {
           />
           <label>Date</label>
         </div>
-        <div className="button-containers">
+       
+          <label id="checkout-total">
+            <strong>Total: ${totalPrice}</strong>
+          </label>
+       
+
+        <div className="button-container">
           <button
             type="submit"
             value="checkout"

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "../features/productsSlice";
+import { getCartSavedProducts, getProducts } from "../features/productsSlice";
 import SkeletonCustomized from "./common/SkeletonCustomized";
 import Filter from "./common/Filter";
 
@@ -13,6 +13,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getProducts());
+    dispatch(getCartSavedProducts());
   }, []);
 
   const showSkeleton = () => {
@@ -50,7 +51,7 @@ const Products = () => {
   return (
     <div  className="head">
     <div className="main" >
-      <div className="buttons" id="products">  
+      <div className="buttons" id="products" style={{marginBottom: '80px'}}>  
         <button
           className={btnDecorator}
           onClick={() => {

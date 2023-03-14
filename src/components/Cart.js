@@ -33,11 +33,26 @@ const Cart = () => {
 
   const cartEmptyMessage = () => {
     return (
-      <>
-        <h3 className="cart-empty">
-          You haven't added any products to your cart yet...
-        </h3>
-      </>
+      // <>
+      //   <h3 className="cart-empty">
+      //     You haven't added any products to your cart yet...
+      //   </h3>
+      // </>
+      <div className="notFoundContainer">
+      <div className="notFound">
+        <h1>You haven't added any products to your cart yet...</h1>
+      </div>
+      <div className="notFound">
+        <h5>
+          Consider adding some from the{" "}
+          <Link to="/" style={{ color: "rgb(107, 105, 105)" }}>
+            {" "}
+            Home
+          </Link>{" "}
+          Page
+        </h5>
+      </div>
+    </div>
     );
   };
 
@@ -100,7 +115,7 @@ const Cart = () => {
       <div className="cart-total-price">
         <label>Total price to pay:</label>
         <br />
-        <span className="total-price">${Math.round(totalPrice * 100) / 100}</span>
+        <span className="total-price"><strong>${Math.round(totalPrice * 100) / 100}</strong></span>
       </div>
 
       <br />

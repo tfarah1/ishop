@@ -53,7 +53,7 @@ const Copyrights = () => {
     //   </div>
     //   <p className="copy">© Copyright iShop</p>
     // </footer>
-    <footer class="footer">
+    <footer class="footer" id="footer">
     <div class="footer__logo-box">
       <img src="img/logo-green-2x.png" alt="full logo" class="footer__logo" />
     </div>
@@ -83,6 +83,7 @@ const Copyrights = () => {
         <p class="footer__copyright">
           Built by Farah Taleb, Omar Abbas, Baker Lawzi, and Mohammad Shawa for their 
           MFE-Tash8eel Final Project. &nbsp; &nbsp; &copy; 2023 LUMINOSA. All rights reserved. 
+        
         </p>
       </div>
     </div>
@@ -91,4 +92,4 @@ const Copyrights = () => {
   );
 };
 
-export default Copyrights;
+export default Copyrights;

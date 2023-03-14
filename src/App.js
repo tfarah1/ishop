@@ -13,6 +13,7 @@ import Checkout from "./components/common/Checkout";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./components/Database";
 import { useEffect, useState } from "react";
+import Header from "./components/common/Header";
 
 function App() {
   // const auth = getAuth();
@@ -33,31 +34,41 @@ function App() {
   }, []);
   if (user) console.log(user.uid);
 
-  return (
-    <div>
-      <Navbars />
 
+  return (
+<>
+
+    {user ? <Navbars/>: <Header/>
+    }
+    <div>
       <Routes>
         {user ? (
           <>
-            <Route path="/" element={<Products />}></Route>
-            <Route path="products" element={<Products />}></Route>
-            <Route path="products/:id" element={<ProductsDetails />}></Route>
-            <Route path="cart/checkout" element={<Checkout />}></Route>
-            <Route path="cart" element={<Cart />}></Route>
-            <Route path="*" element={<NotFound />} />
+           
+            <>
+              <Route path="/" element={<Products />}></Route>
+              <Route path="products" element={<Products />}></Route>
+              <Route path="products/:id" element={<ProductsDetails />}></Route>
+              <Route path="cart/checkout" element={<Checkout />}></Route>
+              <Route path="cart" element={<Cart />}></Route>
+              <Route path="*" element={<NotFound />} />
+            </>
           </>
         ) : (
           <>
-            <Route path="/" element={<Signin />}></Route>
-            <Route path="signup" element={<Signup />}></Route>
-            <Route path="signin" element={<Signin />}></Route>
+            
+            <>
+              <Route path="/" element={<Signin />}></Route>
+              <Route path="signup" element={<Signup />}></Route>
+              <Route path="signin" element={<Signin />}></Route>
+            </>
           </>
         )}
       </Routes>
 
       <Copyrights />
     </div>
+    </>
   );
 }
 

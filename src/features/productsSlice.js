@@ -8,22 +8,23 @@ export const getProducts = () => (dispatch) => {
   const Productref = ref(db, "products");
   onValue(Productref, (snapshot) => {
     const data = Object.values(snapshot.val());
-    console.log(data);
+    // console.log(data);
     dispatch({ type: "products/setProducts", payload: data });
   });
 };
 
-// console.log(products)
-
-const checkingAvabilitly = ()=>{
+// const checkingAvabilitly
+export const getCartSavedProducts  = () => (dispatch) => {
   const db = getDatabase();
   const Productref = ref(db, "cart");
   onValue(Productref, (snapshot) => {
-    const data = Object.values(snapshot.val());
+    const data = (snapshot.val());
+    dispatch({ type: "products/setCartSavedProducts", payload: data });
     console.log(data);
-    
   });
 }
+
+
 
 const calculateTotal = (cart) => {
   let total = 0;
@@ -48,6 +49,7 @@ const calculateTotal = (cart) => {
 
 const initialState = {
   products: [],
+  CartSavedProducts: [],
   cart: [],
   totalPrice: 0,
   searchQuery: "",
@@ -63,7 +65,9 @@ export const productsSlice = createSlice({
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
     },
-
+    setCartSavedProducts: (state, action) => {
+      state.CartSavedProducts = action.payload;
+    },
     addToCart: (state, action) => {
       let index = state.cart.findIndex((p) => p.id === action.payload.id);
       if (index > -1) {
@@ -75,16 +79,14 @@ export const productsSlice = createSlice({
       }
       state.totalPrice = calculateTotal(state.cart);
 
-      //write
-      const db = getDatabase();
-      const Productref = ref(db, "Cart/");
-      const data = action.payload;
-      function writeUserData(data) {
-        push(Productref, {
-          data: data,
-        });
-      }
-      writeUserData(data);
+      // //write
+      // const db = getDatabase();
+      // const Productref = ref(db, "Cart/");
+      // const data = action.payload;
+      // function writeUserData(data) {
+      //   push(Productref, data);
+      // }
+      // writeUserData(data);
     },
     delProductFromCart: (state, action) => {
       let index = state.cart.findIndex((p) => p.id === action.payload);
@@ -114,5 +116,5 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { setProducts } = productsSlice.actions;
+export const { setProducts, setCartSavedProducts } = productsSlice.actions;
 export default productsSlice.reducer;
