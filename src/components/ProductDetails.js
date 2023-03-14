@@ -56,7 +56,7 @@ const ProductDetails = () => {
               onClick={() => handleAddToCart(product)}
               cursor="pointer"
               style={{
-                backgroundColor: "blueviolet",
+                backgroundColor: "rgb(144, 98, 187)",
                 color: "white",
                 width: "200px",
               }}
@@ -70,7 +70,7 @@ const ProductDetails = () => {
             to="/cart"
             className="btn"
             style={{
-              backgroundColor: "blueviolet",
+              backgroundColor: "rgb(144, 98, 187)",
               color: "white",
               width: "640px",
             }}

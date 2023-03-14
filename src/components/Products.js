@@ -51,7 +51,7 @@ const Products = () => {
   return (
     <div  className="head">
     <div className="main" >
-      <div className="buttons" id="products" style={{marginBottom: '80px'}}>  
+      <div className="buttons" id="products" style={{marginBottom: '60px'}}>  
         <button
           className={btnDecorator}
           onClick={() => {

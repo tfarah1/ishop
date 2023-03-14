@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
         <p className="card-title">{product.title?.substring(0, 42)}...</p>
       </div>
       {showUnits && units >= 1 ? (
-        <span className="card-units">{units}x</span>
+        <span className="card-units"><strong>{units}x</strong></span>
       ) : (
         <></>
       )}
